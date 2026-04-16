@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, startTransition } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
 import { cityContent, cityOrder } from "./content/cities";
 import { createWaveBlob } from "./lib/audio";
+import { MapPage } from "./MapPage";
 
 const audioContext = typeof window !== "undefined" ? new (window.AudioContext || window.webkitAudioContext)() : null;
 
@@ -12,6 +13,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Navigate to={`/city/${cityOrder[0]}`} replace />} />
       <Route path="/city/:citySlug" element={<CityRoute lang={lang} onToggleLanguage={() => startTransition(() => setLang((current) => (current === "zh" ? "en" : "zh")))} />} />
+      <Route path="/map" element={<MapRoute lang={lang} onToggleLanguage={() => startTransition(() => setLang((current) => (current === "zh" ? "en" : "zh")))} />} />
       <Route path="*" element={<Navigate to={`/city/${cityOrder[0]}`} replace />} />
     </Routes>
   );
@@ -34,6 +36,17 @@ function CityRoute({ lang, onToggleLanguage }) {
   if (!city) return null;
 
   return <CityPage city={city} lang={lang} onToggleLanguage={onToggleLanguage} />;
+}
+
+function MapRoute({ lang, onToggleLanguage }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return <MapPage lang={lang} onToggleLanguage={onToggleLanguage} navigate={navigate} />;
 }
 
 function CityPage({ city, lang, onToggleLanguage }) {
@@ -243,6 +256,9 @@ function CityPage({ city, lang, onToggleLanguage }) {
           <span className="brand-en">{lang === "zh" ? "City Soundscape" : "Urban Acoustic Narrative"}</span>
         </div>
         <nav className="city-nav" aria-label="City navigation">
+          <button className="city-link" onClick={() => navigate("/map")} title={lang === "zh" ? "全景" : "Panorama"}>
+            {lang === "zh" ? "全景" : "PANORAMA"}
+          </button>
           {cityOrder.map((slug) => (
             <button key={slug} className={`city-link ${slug === city.slug ? "is-active" : ""}`} onClick={() => goToCity(slug)}>
               {cityContent[slug].text[lang].nav}
