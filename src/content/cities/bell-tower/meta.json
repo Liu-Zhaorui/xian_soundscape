@@ -1,0 +1,231 @@
+{
+  "coverImage": "/assets/cities/bell-tower/cover.jpg",
+  "heroImage": "linear-gradient(135deg, rgba(70, 70, 70, 0.86), rgba(105, 105, 105, 0.4)), radial-gradient(circle at 30% 18%, rgba(192, 192, 192, 0.26), transparent 34%), radial-gradient(circle at 78% 28%, rgba(169, 169, 169, 0.24), transparent 30%)",
+  "palette": [
+    "linear-gradient(135deg, rgba(64, 64, 64, 0.92), rgba(105, 105, 105, 0.55))",
+    "linear-gradient(135deg, rgba(70, 70, 70, 0.92), rgba(112, 128, 144, 0.46))",
+    "linear-gradient(135deg, rgba(80, 80, 80, 0.92), rgba(128, 128, 128, 0.44))"
+  ],
+  "backgroundSound": {
+    "seed": 0.44,
+    "color": "bell",
+    "src": null
+  },
+  "text": {
+    "zh": {
+      "nav": "钟楼",
+      "eyebrow": "古城标志建筑声景档案",
+      "title": "钟楼·古城回鸣",
+      "subtitle": "从晨间高塔的晨钟、脚步与人语，到暮色里古城的余韵，让滚动像一次见证古城沧桑的声景漫步，感受时间在这里的流逝。",
+      "sideTitle": "声景维度",
+      "stats": [
+        [
+          "地标景观",
+          "06"
+        ],
+        [
+          "时代记忆",
+          "03"
+        ],
+        [
+          "音响纹理",
+          "12"
+        ]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "晨钟 / Tower bell",
+          "title": "塔顶的钟声唤醒古城",
+          "description": "高耸的钟楼中，晨钟声在高空回荡，与下方街道的脚步、叫卖声融合，形成一个竖向的声景空间。",
+          "hotspots": [
+            {
+              "id": "bell",
+              "label": "晨钟鸣响",
+              "x": "66%",
+              "y": "25%",
+              "kicker": "城市时钟",
+              "title": "晨钟鸣响",
+              "text": "清晨时分，钟楼顶的古钟敲响，声音在古城的砖石间回荡，和远处的晨鸣一起形成具有年代感的音响地标。",
+              "image": "/assets/cities/bell-tower/hotspot-1.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.18,
+                "color": "bell"
+              }
+            },
+            {
+              "id": "arcade",
+              "label": "骑楼回声",
+              "x": "28%",
+              "y": "58%",
+              "kicker": "建筑共鸣",
+              "title": "骑楼回声",
+              "text": "风在骑楼的拱形走廊中吹过，会形成特有的低频共鸣，像老城墙在诉说着历史的故事。",
+              "image": "/assets/cities/bell-tower/hotspot-2.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.54,
+                "color": "wind"
+              }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "午时 / Urban pulse",
+          "title": "街道赋予声音商业的脉搏",
+          "description": "午时的古城街道人声鼎沸，商贩的叫卖、行人的脚步在窄小的街道中层层叠加，形成一个密集而有质感的声响场景。",
+          "hotspots": [
+            {
+              "id": "street",
+              "label": "市井回响",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "人文气息",
+              "title": "市井回响",
+              "text": "古城街道的建筑间距让每一个声音都有了回响，商业的热闹在砖石间被放大，让古城显得富有生命力。",
+              "image": "/assets/cities/bell-tower/hotspot-3.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.78,
+                "color": "crowd"
+              }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "暮色 / Time remains",
+          "title": "暮色中钟楼依旧独立",
+          "description": "夜幕降临后，街道逐渐安静，但钟楼的轮廓在灯光下更加清晰，它的存在跨越了千年的时间。",
+          "hotspots": [
+            {
+              "id": "nightbell",
+              "label": "暮钟悠长",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "永恒象征",
+              "title": "暮钟悠长",
+              "text": "暮色中的钟声显得格外悠长而深沉，在安静的夜晚，它成为连接过去和现在的声音纽带。",
+              "image": "/assets/cities/bell-tower/hotspot-4.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.24,
+                "color": "bell"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "nav": "Bell Tower",
+      "eyebrow": "Historic City Landmark Soundscape",
+      "title": "Bell Tower: Ancient City Resonance",
+      "subtitle": "From morning bell chimes, footsteps and voices, to twilight echoes across ancient streets, scroll through an acoustic journey witnessing the passage of time in this historic landmark.",
+      "sideTitle": "Soundscape Metrics",
+      "stats": [
+        [
+          "Landmark Views",
+          "06"
+        ],
+        [
+          "Time Memories",
+          "03"
+        ],
+        [
+          "Acoustic Textures",
+          "12"
+        ]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "Morning Bell / Tower bell",
+          "title": "Tower bells awaken the ancient city",
+          "description": "High atop the bell tower, morning bells echo and blend with street-level footsteps and vendor calls, creating a vertical soundscape dimension.",
+          "hotspots": [
+            {
+              "id": "bell",
+              "label": "Morning Chimes",
+              "x": "66%",
+              "y": "25%",
+              "kicker": "City timepiece",
+              "title": "Morning Chimes",
+              "text": "At dawn, the ancient bell rings atop the tower, its sound echoing through stone and brick, blending with morning birdsong to create a temporal landmark.",
+              "image": "/assets/cities/bell-tower/hotspot-1.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.18,
+                "color": "bell"
+              }
+            },
+            {
+              "id": "arcade",
+              "label": "Arcade Resonance",
+              "x": "28%",
+              "y": "58%",
+              "kicker": "Architectural harmony",
+              "title": "Arcade Resonance",
+              "text": "Wind flowing through the archway corridors creates distinctive low-frequency resonances, as if the old city walls are recounting their historical narratives.",
+              "image": "/assets/cities/bell-tower/hotspot-2.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.54,
+                "color": "wind"
+              }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "Noon / Urban pulse",
+          "title": "Streets pulse with commercial vitality",
+          "description": "At noon, ancient streets bustle with vendor calls and footsteps layered densely in narrow passages, creating a rich and vibrant soundscape.",
+          "hotspots": [
+            {
+              "id": "street",
+              "label": "Market Echo",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "Human spirit",
+              "title": "Market Echo",
+              "text": "Street-level architecture amplifies every sound—merchant calls resonate off brick and stone, bringing commercial energy and cultural vitality to the ancient city.",
+              "image": "/assets/cities/bell-tower/hotspot-3.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.78,
+                "color": "crowd"
+              }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "Dusk / Time remains",
+          "title": "The tower stands eternal through dusk",
+          "description": "As night falls, streets grow quiet, yet the bell tower's silhouette becomes clearer under lights, spanning a thousand years of time.",
+          "hotspots": [
+            {
+              "id": "nightbell",
+              "label": "Evening Bells",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "Eternal symbol",
+              "title": "Evening Bells",
+              "text": "In twilight's hush, the bell's resonance deepens and lengthens, becoming a sonic bridge connecting past and present, ancient and modern.",
+              "image": "/assets/cities/bell-tower/hotspot-4.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.24,
+                "color": "bell"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "footer": "© 2026 City Soundscape Project. All rights reserved."
+}

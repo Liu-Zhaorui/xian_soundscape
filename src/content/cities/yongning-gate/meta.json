@@ -1,0 +1,231 @@
+{
+  "coverImage": "/assets/cities/yongning-gate/cover.jpg",
+  "heroImage": "linear-gradient(135deg, rgba(139, 69, 19, 0.86), rgba(184, 134, 11, 0.4)), radial-gradient(circle at 30% 18%, rgba(218, 165, 32, 0.26), transparent 34%), radial-gradient(circle at 78% 28%, rgba(210, 180, 140, 0.24), transparent 30%)",
+  "palette": [
+    "linear-gradient(135deg, rgba(139, 69, 19, 0.92), rgba(160, 82, 45, 0.55))",
+    "linear-gradient(135deg, rgba(160, 82, 45, 0.92), rgba(184, 134, 11, 0.46))",
+    "linear-gradient(135deg, rgba(139, 90, 43, 0.92), rgba(205, 133, 63, 0.44))"
+  ],
+  "backgroundSound": {
+    "seed": 0.41,
+    "color": "ancient",
+    "src": null
+  },
+  "text": {
+    "zh": {
+      "nav": "永宁门",
+      "eyebrow": "古城城门声景档案",
+      "title": "永宁门·古都门韵",
+      "subtitle": "从晨间城门口的鸟鸣、商旅的脚步声，到暮色中的钟鼓声响，让滚动像一次穿梭古都商业往来的声景旅行，感受历史的温度。",
+      "sideTitle": "声景维度",
+      "stats": [
+        [
+          "城门遗迹",
+          "06"
+        ],
+        [
+          "商旅记忆",
+          "03"
+        ],
+        [
+          "环境音响",
+          "12"
+        ]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "晨曦 / Gate awakens",
+          "title": "城门在晨曦中苏醒",
+          "description": "高大的城门洞口中，晨风夹着鸟鸣吹过，城门外的商旅开始聚集，脚步声和讨价还价的声音逐渐交织成一幅古都清晨的声景画卷。",
+          "hotspots": [
+            {
+              "id": "gate",
+              "label": "门洞回声",
+              "x": "66%",
+              "y": "25%",
+              "kicker": "建筑音响",
+              "title": "门洞回声",
+              "text": "清晨时分，风穿过高大的城门洞，会被石头和木结构放大和延伸，形成一种具有地标特征的音响特征。",
+              "image": "/assets/cities/yongning-gate/hotspot-1.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.18,
+                "color": "bell"
+              }
+            },
+            {
+              "id": "market",
+              "label": "商业人语",
+              "x": "28%",
+              "y": "58%",
+              "kicker": "市场活力",
+              "title": "商业人语",
+              "text": "商人和旅客在城门前汇聚，讨论生意和路线，形成一种特有的市场语言，充满了交易的活力。",
+              "image": "/assets/cities/yongning-gate/hotspot-2.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.54,
+                "color": "crowd"
+              }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "午时 / Commerce flowing",
+          "title": "门前商业的繁荣脉动",
+          "description": "中午时分，城门前人来人往，商贩的叫卖声、驼队的铃铛声、马蹄声、讨价还价声混在一起，形成古代丝路贸易的真实写照。",
+          "hotspots": [
+            {
+              "id": "caravan",
+              "label": "驼队铃铛",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "丝路记忆",
+              "title": "驼队铃铛",
+              "text": "远来的驼队摇着铃铛进入城门，这是丝绸之路贸易繁荣的最直接证据，每一声铃铛都诉说着一个商业故事。",
+              "image": "/assets/cities/yongning-gate/hotspot-3.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.78,
+                "color": "bell"
+              }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "暮色 / Guard ritual",
+          "title": "暮色中城门的例行准备",
+          "description": "黄昏时分，城门开始准备关闭，守卫的吹号声、城门关闭的声响、最后的商人匆匆离去的脚步声，构成了古城一天的结束。",
+          "hotspots": [
+            {
+              "id": "closing",
+              "label": "城门关闭",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "日常循环",
+              "title": "城门关闭",
+              "text": "随着暮色加深，城门的关闭仪式开始，沉重的木门发出深沉的吱呀声，这是古城日常循环中最富仪式感的时刻。",
+              "image": "/assets/cities/yongning-gate/hotspot-4.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.24,
+                "color": "wood"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "nav": "Yongning Gate",
+      "eyebrow": "Ancient City Gate Soundscape",
+      "title": "Yongning Gate: Gateway Through Time",
+      "subtitle": "From morning birdsong and merchant footsteps at the ancient gate, to evening drum and bell sounds, experience an acoustic journey through centuries of commerce and culture.",
+      "sideTitle": "Soundscape Metrics",
+      "stats": [
+        [
+          "Gate Relics",
+          "06"
+        ],
+        [
+          "Commerce Memories",
+          "03"
+        ],
+        [
+          "Environmental Resonance",
+          "12"
+        ]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "Dawn / Gate awakens",
+          "title": "City gate awakens at dawn",
+          "description": "Morning wind with birdsong flows through the tall gate passage, while merchants and travelers begin to gather, their footsteps and voices weaving together into an ancient dawn soundscape.",
+          "hotspots": [
+            {
+              "id": "gate",
+              "label": "Gate Passage",
+              "x": "66%",
+              "y": "25%",
+              "kicker": "Architectural acoustics",
+              "title": "Gate Passage",
+              "text": "At dawn, wind passes through the towering gate tunnel and is amplified by stone and wood, creating a distinctive acoustic landmark of this ancient passage.",
+              "image": "/assets/cities/yongning-gate/hotspot-1.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.18,
+                "color": "bell"
+              }
+            },
+            {
+              "id": "market",
+              "label": "Commerce Talk",
+              "x": "28%",
+              "y": "58%",
+              "kicker": "Market energy",
+              "title": "Commerce Talk",
+              "text": "Merchants and travelers converge at the gate, negotiating routes and deals, their conversations creating a unique marketplace language filled with trading vitality.",
+              "image": "/assets/cities/yongning-gate/hotspot-2.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.54,
+                "color": "crowd"
+              }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "Noon / Commerce flowing",
+          "title": "Prosperity pulses at the gate",
+          "description": "At midday, the gate throngs with endless traffic—vendor calls, camel bells, hoofbeats, and haggling voices blend together, echoing the prosperity of ancient Silk Road trade.",
+          "hotspots": [
+            {
+              "id": "caravan",
+              "label": "Caravan Bells",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "Silk Road memory",
+              "title": "Caravan Bells",
+              "text": "Incoming caravans ring their bells as they pass through the gate—each chime an echo of trade routes, commerce, and cultural exchange spanning continents.",
+              "image": "/assets/cities/yongning-gate/hotspot-3.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.78,
+                "color": "bell"
+              }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "Dusk / Guard ritual",
+          "title": "Evening preparations at the gate",
+          "description": "As twilight falls, the gate prepares to close—guard trumpet calls, creaking hinges, the last merchants hurrying through—a sacred closing ritual marking the ancient city's day.",
+          "hotspots": [
+            {
+              "id": "closing",
+              "label": "Gate Closing",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "Daily ritual",
+              "title": "Gate Closing",
+              "text": "As darkness deepens, the gate-closing ceremony begins, heavy wooden doors creak with solemn resonance—the most ceremonial moment in the city's daily cycle.",
+              "image": "/assets/cities/yongning-gate/hotspot-4.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.24,
+                "color": "wood"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "footer": "© 2026 City Soundscape Project. All rights reserved."
+}

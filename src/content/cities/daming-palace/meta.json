@@ -1,0 +1,231 @@
+{
+  "coverImage": "/assets/cities/daming-palace/cover.jpg",
+  "heroImage": "linear-gradient(135deg, rgba(139, 90, 43, 0.86), rgba(184, 134, 11, 0.4)), radial-gradient(circle at 30% 18%, rgba(244, 191, 101, 0.26), transparent 34%), radial-gradient(circle at 78% 28%, rgba(218, 165, 32, 0.24), transparent 30%)",
+  "palette": [
+    "linear-gradient(135deg, rgba(139, 69, 19, 0.92), rgba(101, 67, 33, 0.55))",
+    "linear-gradient(135deg, rgba(160, 82, 45, 0.92), rgba(184, 134, 11, 0.46))",
+    "linear-gradient(135deg, rgba(139, 90, 43, 0.92), rgba(160, 82, 45, 0.44))"
+  ],
+  "backgroundSound": {
+    "seed": 0.38,
+    "color": "ancient",
+    "src": null
+  },
+  "text": {
+    "zh": {
+      "nav": "大明宫",
+      "eyebrow": "唐代宫殿声景档案",
+      "title": "大明宫·帝都回响",
+      "subtitle": "从晨曦中回廊的风声、脚步与钟鸣，到暮色里宫殿的余音，让滚动像一次穿越千年的声景之旅，感受曾经的盛唐辉煌。",
+      "sideTitle": "声景维度",
+      "stats": [
+        [
+          "遗迹地标",
+          "06"
+        ],
+        [
+          "历史叙事",
+          "03"
+        ],
+        [
+          "环境纹理",
+          "12"
+        ]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "晨曦 / Palace axis",
+          "title": "回廊在晨曦里苏醒",
+          "description": "高大的回廊让风切割成深沉的音色，广场上的脚步与远方的钟声一起铺开，形成一条贯穿千年的时间基准线。",
+          "hotspots": [
+            {
+              "id": "bell",
+              "label": "晨钟悠悠",
+              "x": "66%",
+              "y": "25%",
+              "kicker": "时间标记",
+              "title": "晨钟悠悠",
+              "text": "清晨时分，古钟的鸣声会在宽阔的宫殿前被拉长，和远处鸦啼声一起形成具有时代感的空间序列。这里的音色更偏金属的沧桑感。",
+              "image": "/assets/cities/daming-palace/hotspot-1.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.18,
+                "color": "bell"
+              }
+            },
+            {
+              "id": "corridor",
+              "label": "回廊风韵",
+              "x": "28%",
+              "y": "58%",
+              "kicker": "建筑纹理",
+              "title": "回廊风韵",
+              "text": "风穿过高耸的回廊柱体时，会在中频形成深沉且连续的共鸣感，像千年前帝王的低声呢喃。",
+              "image": "/assets/cities/daming-palace/hotspot-2.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.54,
+                "color": "wind"
+              }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "午时 / Echo chamber",
+          "title": "广场把声音映照成深度",
+          "description": "开阔的宫廷广场将声音映照和分散，近处的脚步声更清晰，远处的人语声被轻微地模糊，像一幅逐渐展开的历史画卷。",
+          "hotspots": [
+            {
+              "id": "courtyard",
+              "label": "广场回响",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "空间共鸣",
+              "title": "广场回响",
+              "text": "开阔宫廷会拉长每一个声音的尾音，让脚步、低语甚至风声都带上了深沉的历史回响，让空间显得宏大而深邃。",
+              "image": "/assets/cities/daming-palace/hotspot-3.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.78,
+                "color": "stone"
+              }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "暮色 / Time echo",
+          "title": "暮色里只有历史的呼吸",
+          "description": "游人散去之后，声场从热闹变得寂寥，剩下的是风的吹拂、石头的嘎吱声，以及远处的鸟鸣—这是千年前一样的声音。",
+          "hotspots": [
+            {
+              "id": "stone",
+              "label": "石阶足音",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "时间标尺",
+              "title": "石阶足音",
+              "text": "古老石阶上的脚步声会显得特别清脆有力，在暮色中成为穿梭于历史与现实之间的听觉刻度。",
+              "image": "/assets/cities/daming-palace/hotspot-4.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.24,
+                "color": "steps"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "nav": "Daming Palace",
+      "eyebrow": "Tang Dynasty Soundscape Archive",
+      "title": "Daming Palace: Echoes of the Imperial Court",
+      "subtitle": "From the morning wind through towering corridors, the ring of ancient bells, to the twilight resonance across vast courtyards, scroll through an acoustic journey across centuries, feeling the splendor of the Tang Dynasty.",
+      "sideTitle": "Soundscape Metrics",
+      "stats": [
+        [
+          "Heritage Sites",
+          "06"
+        ],
+        [
+          "Historical Narratives",
+          "03"
+        ],
+        [
+          "Environmental Textures",
+          "12"
+        ]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "Dawn / Palace axis",
+          "title": "Corridors awaken in the morning light",
+          "description": "Towering corridors split the wind into solemn tones while footsteps and distant bells establish a steady acoustic baseline connecting to a thousand-year-old timeline.",
+          "hotspots": [
+            {
+              "id": "bell",
+              "label": "Morning Bell",
+              "x": "66%",
+              "y": "25%",
+              "kicker": "Time marker",
+              "title": "Morning Bell",
+              "text": "At daybreak, the ancient bell stretches across the palace courtyard and blends with distant crows, producing a temporal resonance wrapped in historical atmosphere.",
+              "image": "/assets/cities/daming-palace/hotspot-1.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.18,
+                "color": "bell"
+              }
+            },
+            {
+              "id": "corridor",
+              "label": "Corridor Harmonics",
+              "x": "28%",
+              "y": "58%",
+              "kicker": "Architectural texture",
+              "title": "Corridor Harmonics",
+              "text": "When wind passes through towering colonnade pillars, it creates deep resonant frequencies, like the whispered counsel of ancient emperors echoing through centuries.",
+              "image": "/assets/cities/daming-palace/hotspot-2.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.54,
+                "color": "wind"
+              }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "Noon / Echo chamber",
+          "title": "The courtyard maps depth through sound",
+          "description": "Vast palace courtyards reflect and distribute sound, sharpening nearby footsteps while gently blurring distant voices into a historical tableau.",
+          "hotspots": [
+            {
+              "id": "courtyard",
+              "label": "Courtyard Resonance",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "Spatial harmony",
+              "title": "Courtyard Resonance",
+              "text": "Open courtyards extend the tail of every sound—footsteps, whispers, even wind—adding layers of historical depth, making the space feel vast and ancient.",
+              "image": "/assets/cities/daming-palace/hotspot-3.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.78,
+                "color": "stone"
+              }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "Dusk / Time echo",
+          "title": "At dusk, only history breathes",
+          "description": "Once visitors depart, the soundscape transforms from vibrant to serene, leaving only wind whispers, stone creaks, and distant bird calls—the same sounds from a thousand years ago.",
+          "hotspots": [
+            {
+              "id": "stone",
+              "label": "Stone Steps",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "Time scale",
+              "title": "Stone Steps",
+              "text": "Footsteps on ancient stone become remarkably crisp and resonant in twilight, serving as an auditory measure between past and present.",
+              "image": "/assets/cities/daming-palace/hotspot-4.jpg",
+              "audio": null,
+              "sound": {
+                "seed": 0.24,
+                "color": "steps"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "footer": "© 2026 City Soundscape Project. All rights reserved."
+}
