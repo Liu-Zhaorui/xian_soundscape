@@ -1,0 +1,189 @@
+{
+  "coverImage": "/src/content/img/typical/mingde1.jpg",
+  "heroImage": "linear-gradient(135deg, rgba(120, 72, 48, 0.9), rgba(160, 100, 60, 0.42)), radial-gradient(circle at 32% 22%, rgba(244, 191, 101, 0.24), transparent 34%), radial-gradient(circle at 76% 26%, rgba(139, 90, 43, 0.22), transparent 30%)",
+  "palette": [
+    "linear-gradient(135deg, rgba(110, 65, 40, 0.92), rgba(139, 90, 43, 0.55))",
+    "linear-gradient(135deg, rgba(128, 78, 50, 0.92), rgba(184, 134, 11, 0.46))",
+    "linear-gradient(135deg, rgba(100, 62, 38, 0.92), rgba(160, 120, 80, 0.44))"
+  ],
+  "backgroundSound": {
+    "seed": 0.39,
+    "color": "horn",
+    "src": null
+  },
+  "text": {
+    "zh": {
+      "nav": "明德门",
+      "eyebrow": "隋唐国门声景档案",
+      "title": "明德门·五门洞南风",
+      "subtitle": "作为外郭正南门，明德门曾把官道、商旅与礼仪性入城连成一线。风从开阔地吹入门洞，脚步与车辙在夯土与砖石之间切换音色。",
+      "sideTitle": "声景维度",
+      "stats": [
+        ["门道尺度", "05"],
+        ["南北轴线", "04"],
+        ["行旅与礼仪", "11"]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "晨曦 / Gate opens",
+          "title": "门洞把晨光切成可听的通道",
+          "description": "清晨人流未盛，门洞像一组平行的共鸣腔：外侧风声更利，内侧脚步更实。偶尔传来的铃铎声沿轴线远去，提示这条道路曾通向整个帝国的叙事。",
+          "hotspots": [
+            {
+              "id": "gate-passage",
+              "label": "门洞混响",
+              "x": "64%",
+              "y": "26%",
+              "kicker": "建筑声学",
+              "title": "门洞混响",
+              "text": "多门洞并列时，穿行其间的脚步不会完全重叠：左右相位略有差异，形成宽而浅的回声纹理，像一条可步行穿越的「声廊」。",
+              "image": "/assets/cities/mingde-gate/hotspot-1.jpg",
+              "audio": null,
+              "sound": { "seed": 0.19, "color": "bell" }
+            },
+            {
+              "id": "axis-breeze",
+              "label": "轴线来风",
+              "x": "28%",
+              "y": "56%",
+              "kicker": "城市风向",
+              "title": "轴线来风",
+              "text": "南风北上时，门洞成为风道：流速在洞口加快，穿过门洞后又突然扩散，带来一阵清晰可辨的「穿堂声」。",
+              "image": "/assets/cities/mingde-gate/hotspot-2.jpg",
+              "audio": null,
+              "sound": { "seed": 0.52, "color": "wind" }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "午时 / Traffic",
+          "title": "车马与市声在门前汇合",
+          "description": "白昼时分，门前空间承担转换：由乡野开阔进入坊市秩序。车轮、吆喝、牲畜与交谈在中频堆叠，门楼若仍在，会把部分能量反射回街道，形成热闹的「声闸」。",
+          "hotspots": [
+            {
+              "id": "caravan-horn",
+              "label": "车辙与铃铎",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "行旅记忆",
+              "title": "车辙与铃铎",
+              "text": "硬质路面上的滚动声与金属铃铎不同频，却同一节奏：远听像一条移动的声线，近了才分辨出人语与畜鸣。",
+              "image": "/assets/cities/mingde-gate/hotspot-3.jpg",
+              "audio": null,
+              "sound": { "seed": 0.74, "color": "horn" }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "暮色 / Gate closes",
+          "title": "暮色中，城门收束一日的喧哗",
+          "description": "光线变暗后，车流稀疏，门洞里的反射更清晰：远处余响被吸进土基，近处只剩零星脚步。像一本书缓缓合上，留下纸页与墨的干燥气息——在声景里，则是低频退去后的安静。",
+          "hotspots": [
+            {
+              "id": "evening-steps",
+              "label": "收声时刻",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "昼夜节律",
+              "title": "收声时刻",
+              "text": "人少时，门洞不再被持续掩蔽，每一次经过都像被短暂「点名」：脚步、呼吸与衣料摩擦变得突出，空间感反而更大。",
+              "image": "/assets/cities/mingde-gate/hotspot-4.jpg",
+              "audio": null,
+              "sound": { "seed": 0.28, "color": "steps" }
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "nav": "Mingde Gate",
+      "eyebrow": "Sui–Tang capital gate soundscape",
+      "title": "Mingde Gate: Five Passages, Southern Wind",
+      "subtitle": "As the outer southern gate of Chang’an, Mingde joined official roads, trade, and ceremonial entry. Wind funneled through the tunnels while wheels and voices shifted timbre from earth to stone—the thickest sonic threshold on the south axis.",
+      "sideTitle": "Soundscape Metrics",
+      "stats": [
+        ["Gate scale", "05"],
+        ["North–south axis", "04"],
+        ["Travel & rite", "11"]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "Dawn / Gate opens",
+          "title": "Gateways carve dawn into audible corridors",
+          "description": "At early light, few pass through; each tunnel behaves like a parallel resonator—sharper wind outside, firmer steps within. Distant bells drift along the axis, echoing the road that once led into the empire’s story.",
+          "hotspots": [
+            {
+              "id": "gate-passage",
+              "label": "Tunnel reverberance",
+              "x": "64%",
+              "y": "26%",
+              "kicker": "Architecture",
+              "title": "Tunnel reverberance",
+              "text": "With multiple openings, footsteps never fully overlap—slight left–right phase offsets create a wide, shallow echo texture, a corridor you walk through with your ears.",
+              "image": "/assets/cities/mingde-gate/hotspot-1.jpg",
+              "audio": null,
+              "sound": { "seed": 0.19, "color": "bell" }
+            },
+            {
+              "id": "axis-breeze",
+              "label": "Wind along the axis",
+              "x": "28%",
+              "y": "56%",
+              "kicker": "Urban wind",
+              "title": "Wind along the axis",
+              "text": "When southerlies run, the gate becomes a duct: air speeds at the mouth, then spreads past the tunnels in a clear rush of through-draft.",
+              "image": "/assets/cities/mingde-gate/hotspot-2.jpg",
+              "audio": null,
+              "sound": { "seed": 0.52, "color": "wind" }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "Noon / Traffic",
+          "title": "Carts and voices meet at the threshold",
+          "description": "By day the forecourt turns traffic into order—from open country into gridded wards. Wheels, calls, animals, and talk stack in the midrange; if towers still stood, facades would throw energy back into the street like a sonic lock gate.",
+          "hotspots": [
+            {
+              "id": "caravan-horn",
+              "label": "Wheels and bells",
+              "x": "46%",
+              "y": "42%",
+              "kicker": "Travel memory",
+              "title": "Wheels and bells",
+              "text": "Rolling on hard ground and metal bells sit in different bands but share a rhythm—far off it is a moving line of sound, closer it separates into speech and beasts.",
+              "image": "/assets/cities/mingde-gate/hotspot-3.jpg",
+              "audio": null,
+              "sound": { "seed": 0.74, "color": "horn" }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "Dusk / Gate closes",
+          "title": "At dusk the gate gathers the day’s noise home",
+          "description": "As light fades, traffic thins and reflections inside the tunnels clarify. Distant hum sinks into the earth; only scattered steps remain—like closing a book, leaving dryness and quiet where bustle once was.",
+          "hotspots": [
+            {
+              "id": "evening-steps",
+              "label": "When the crowd thins",
+              "x": "58%",
+              "y": "66%",
+              "kicker": "Daily rhythm",
+              "title": "When the crowd thins",
+              "text": "With fewer bodies masking the space, each crossing is briefly spotlighted—footsteps, breath, cloth—making the gate feel larger, not smaller.",
+              "image": "/assets/cities/mingde-gate/hotspot-4.jpg",
+              "audio": null,
+              "sound": { "seed": 0.28, "color": "steps" }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "footer": "© 2026 City Soundscape Project. All rights reserved."
+}

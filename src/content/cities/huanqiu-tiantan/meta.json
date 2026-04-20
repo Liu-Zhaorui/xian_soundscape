@@ -1,0 +1,189 @@
+{
+  "coverImage": "/src/content/img/typical/yuanqiuw.jpg",
+  "heroImage": "linear-gradient(135deg, rgba(88, 66, 124, 0.88), rgba(139, 90, 43, 0.38)), radial-gradient(circle at 28% 20%, rgba(218, 165, 32, 0.22), transparent 36%), radial-gradient(circle at 72% 30%, rgba(176, 196, 222, 0.2), transparent 32%)",
+  "palette": [
+    "linear-gradient(135deg, rgba(72, 61, 106, 0.92), rgba(105, 90, 130, 0.52))",
+    "linear-gradient(135deg, rgba(90, 74, 120, 0.92), rgba(139, 115, 85, 0.44))",
+    "linear-gradient(135deg, rgba(65, 55, 95, 0.92), rgba(184, 134, 11, 0.4))"
+  ],
+  "backgroundSound": {
+    "seed": 0.36,
+    "color": "bell",
+    "src": null
+  },
+  "text": {
+    "zh": {
+      "nav": "圜丘天坛",
+      "eyebrow": "礼制高坛声景档案",
+      "title": "圜丘天坛·登封回响",
+      "subtitle": "清晨风声最满，麻雀在阶石上轻跳，像踩着疏朗的韵脚。暮色铺过空旷坛面，世界安静得只剩下光线移动的声音。滑动中，听见古礼散去的空寂如何被草叶收留。",
+      "sideTitle": "声景维度",
+      "stats": [
+        ["坛域尺度", "05"],
+        ["礼乐余韵", "04"],
+        ["风场与空音", "10"]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "晨曦 / Rite at dawn",
+          "title": "晨光掠过坛面的第一道波纹",
+          "description": "日出前后，坛上少人，脚步与衣料声被白堉与夯土吸收，只剩风在阶沿回旋。远处偶有车流，像一条被压低的低频带，托住整个清晨。",
+          "hotspots": [
+            {
+              "id": "altar-wind",
+              "label": "坛面风场",
+              "x": "62%",
+              "y": "28%",
+              "kicker": "开放空间",
+              "title": "坛面风场",
+              "text": "圆形坛面几乎没有垂直遮挡，风的路径清晰可辨：掠过边缘时略急，抵达中心时变得绵软，像一层可被听见的薄毯。",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-1.jpg",
+              "audio": null,
+              "sound": { "seed": 0.22, "color": "wind" }
+            },
+            {
+              "id": "distant-city",
+              "label": "城声抬高",
+              "x": "30%",
+              "y": "55%",
+              "kicker": "地平层次",
+              "title": "城声抬高",
+              "text": "站在坛上，城市噪声被距离磨成一片均匀的「底噪」，与坛场的安静形成对比，让人更清楚自己站在仪式空间之中。",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-2.jpg",
+              "audio": null,
+              "sound": { "seed": 0.5, "color": "mist" }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "午时 / Bell and drum",
+          "title": "钟鼓与踏步的同心圆",
+          "description": "礼乐想象中，钟鼓并非喧嚣，而是节拍的界碑。脚步沿阶上下，木石相接处轻响，和远处偶发的铃声叠在一起，形成缓慢推进的时间感。",
+          "hotspots": [
+            {
+              "id": "ritual-bell",
+              "label": "钟鼓余音",
+              "x": "48%",
+              "y": "44%",
+              "kicker": "礼制想象",
+              "title": "钟鼓余音",
+              "text": "钟声偏金属与延展，鼓声贴地而行；若在空旷坛面聆听，尾音会被拉得更长，仿佛一层层向外扩散的圆。",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-3.jpg",
+              "audio": null,
+              "sound": { "seed": 0.71, "color": "bell" }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "暮色 / Echo fades",
+          "title": "暮色里，坛场把声音交还城市",
+          "description": "日影斜长，坛缘的轮廓变柔和，风声与虫鸣重新占据中频。人声稀少时，土与石的吸声特性更明显，像整个空间轻轻收束了一天的余响。",
+          "hotspots": [
+            {
+              "id": "dusk-quiet",
+              "label": "暮色收声",
+              "x": "56%",
+              "y": "68%",
+              "kicker": "昼夜交替",
+              "title": "暮色收声",
+              "text": "光线变弱时，听觉往往更敏锐：远处车灯与广播变得模糊，近处脚步与呼吸更清晰——坛场在声音上完成了一次「收束」。",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-4.jpg",
+              "audio": null,
+              "sound": { "seed": 0.31, "color": "garden" }
+            }
+          ]
+        }
+      ]
+    },
+    "en": {
+      "nav": "Circular Mound Altar",
+      "eyebrow": "Ritual terrace soundscape",
+      "title": "Circular Mound Altar: Steps Toward the Sky",
+      "subtitle": "Open terraces thin the wind, lift the city into a distant hush, and let bells, drums, and footsteps trace concentric rings—measuring the audible distance between heaven and the human world.",
+      "sideTitle": "Soundscape Metrics",
+      "stats": [
+        ["Terrace scale", "05"],
+        ["Ritual resonance", "04"],
+        ["Wind & silence", "10"]
+      ],
+      "scenes": [
+        {
+          "index": "01",
+          "subtitle": "Dawn / Rite at dawn",
+          "title": "First light ripples across the terrace",
+          "description": "Around sunrise the terrace is nearly empty—footsteps and fabric rustle are swallowed by earth and chalky soil, while wind curls along the steps. Distant traffic sits low, like a held breath beneath the morning.",
+          "hotspots": [
+            {
+              "id": "altar-wind",
+              "label": "Wind across the mound",
+              "x": "62%",
+              "y": "28%",
+              "kicker": "Open space",
+              "title": "Wind across the mound",
+              "text": "With little vertical shelter, wind paths are legible: quicker at the rim, softer toward the center—like a thin audible blanket you can stand inside.",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-1.jpg",
+              "audio": null,
+              "sound": { "seed": 0.22, "color": "wind" }
+            },
+            {
+              "id": "distant-city",
+              "label": "City lifted away",
+              "x": "30%",
+              "y": "55%",
+              "kicker": "Horizon layers",
+              "title": "City lifted away",
+              "text": "From the terrace, urban noise blurs into a steady floor of sound, sharpening the quiet of the ritual ground and reminding you where you stand.",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-2.jpg",
+              "audio": null,
+              "sound": { "seed": 0.5, "color": "mist" }
+            }
+          ]
+        },
+        {
+          "index": "02",
+          "subtitle": "Noon / Bell and drum",
+          "title": "Bells, drums, and footsteps in rings",
+          "description": "In the imagination of rite, bells and drums mark time rather than noise. Steps rise and fall; wood meets stone softly, overlapping with distant bells in slow procession.",
+          "hotspots": [
+            {
+              "id": "ritual-bell",
+              "label": "Bell and drum tails",
+              "x": "48%",
+              "y": "44%",
+              "kicker": "Ceremonial time",
+              "title": "Bell and drum tails",
+              "text": "Bells carry metal and decay; drums hug the ground. On an open terrace their tails stretch wider, rippling outward in rings you can almost trace by ear.",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-3.jpg",
+              "audio": null,
+              "sound": { "seed": 0.71, "color": "bell" }
+            }
+          ]
+        },
+        {
+          "index": "03",
+          "subtitle": "Dusk / Echo fades",
+          "title": "At dusk the terrace returns sound to the city",
+          "description": "Long shadows soften the rim; wind and insects reclaim the midrange. When voices thin out, earth and stone show their absorptive calm—closing the day’s last reverberance.",
+          "hotspots": [
+            {
+              "id": "dusk-quiet",
+              "label": "Dusk draws sound in",
+              "x": "56%",
+              "y": "68%",
+              "kicker": "Day to night",
+              "title": "Dusk draws sound in",
+              "text": "As light weakens, hearing often sharpens: distant horns blur while nearby breath and steps clarify—the terrace acoustically gathers the day to a close.",
+              "image": "/assets/cities/huanqiu-tiantan/hotspot-4.jpg",
+              "audio": null,
+              "sound": { "seed": 0.31, "color": "garden" }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "footer": "© 2026 City Soundscape Project. All rights reserved."
+}

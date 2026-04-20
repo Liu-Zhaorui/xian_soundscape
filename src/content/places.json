@@ -1,0 +1,332 @@
+[
+  {
+    "serial_number": 1,
+    "cn": "右银台遗址",
+    "en": "youyin",
+    "longitude": 108.95098,
+    "latitude": 34.294476,
+    "intro": "右银台门位于唐京师长安城大明宫西宫墻中部， 是进出大明宫的主要门户之一。",
+    "img_address": "youyin.jpg",
+    "audio_address": "youyin.wav"
+  },
+  {
+    "serial_number": 2,
+    "cn": "麟德殿遗址",
+    "en": "linde",
+    "longitude": 108.95470999999999,
+    "latitude": 34.29653,
+    "intro": "始建于唐高宗麟德年间（664-665年），毁于唐末光启年间的战火，存世约220年。\n位于大明宫西北部、右银台门内，是唐代宫廷规模最大的多功能殿堂，总建筑面积约12300平方米。",
+    "img_address": "linde.jpg",
+    "audio_address": "linde.wav"
+  },
+  {
+    "serial_number": 3,
+    "cn": "九仙门遗址",
+    "en": "jiuxian",
+    "longitude": 108.95236,
+    "latitude": 34.301495,
+    "intro": "九仙门始建于唐高宗龙朔二年（公元662年），是唐代长安城大明宫西宫墙上的宫门之一，因靠近九仙殿而得名，具有重要的军事和政治功能。",
+    "img_address": "jiuxian.jpg",
+    "audio_address": "jiuxian.wav"
+  },
+  {
+    "serial_number": 4,
+    "cn": "大福殿西北侧墩台",
+    "en": "dafuduntai",
+    "longitude": 108.95259,
+    "latitude": 34.3035,
+    "intro": "大福殿是大明宫西北角宫墙连接体的重要宫殿建筑遗址，位于宫城西北部，现存夯土台基东西长70米、南北宽50米，高约5米，总占地面积约11600平方米。考古确认其建筑基址与宫墙形成一体化结构，地基保存良好，夯土层清晰，层厚8—12厘米，间杂碎砖瓦砾。",
+    "img_address": "dafuduntai.jpg",
+    "audio_address": "dafuduntai.wav"
+  },
+  {
+    "serial_number": 5,
+    "cn": "大福殿遗址",
+    "en": "dafu",
+    "longitude": 108.95336999999999,
+    "latitude": 34.303044,
+    "intro": "大福殿是大明宫西北角宫墙连接体的重要宫殿建筑遗址，位于宫城西北部，现存夯土台基东西长70米、南北宽50米，高约5米，总占地面积约11600平方米。考古确认其建筑基址与宫墙形成一体化结构，地基保存良好，夯土层清晰，层厚8—12厘米，间杂碎砖瓦砾。",
+    "img_address": "dafu.jpg",
+    "audio_address": "dafu.wav"
+  },
+  {
+    "serial_number": 6,
+    "cn": "三清殿西南角",
+    "en": "sanqingsw",
+    "longitude": 108.95501499999999,
+    "latitude": 34.30244,
+    "intro": "地处大明宫宫城西北角，是唐代皇家专属道教祭祀建筑，台基总面积达4000平方米，原为高层楼阁式道观建筑。李唐皇室尊老子李耳为始祖、推崇道教，三清殿是宫内供奉道教三清尊神、举行皇家道教斋醮祭祀仪式的核心场所。",
+    "img_address": "sanqingsw.jpg",
+    "audio_address": "sanqingsw.wav"
+  },
+  {
+    "serial_number": 7,
+    "cn": "三清殿遗址",
+    "en": "sanqing",
+    "longitude": 108.95541,
+    "latitude": 34.302483,
+    "intro": "地处大明宫宫城西北角，是唐代皇家专属道教祭祀建筑，台基总面积达4000平方米，原为高层楼阁式道观建筑。李唐皇室尊老子李耳为始祖、推崇道教，三清殿是宫内供奉道教三清尊神、举行皇家道教斋醮祭祀仪式的核心场所。",
+    "img_address": "sanqing.jpg",
+    "audio_address": "sanqing.wav"
+  },
+  {
+    "serial_number": 8,
+    "cn": "玄武门广场",
+    "en": "xuanwus",
+    "longitude": 108.9583,
+    "latitude": 34.304555,
+    "intro": "玄武门是唐长安城大明宫的北宫门，位于宫城北垣中部偏西，始建于贞观八年（公元634年）。门上有楼，为单门道。贞元年间，德宗对玄武门进行修葺，增设门楼与两廊，并驻守北衙禁军，使之成为宫城北部防卫体系的核心。",
+    "img_address": "xuanwus.jpg",
+    "audio_address": "xuanwus.wav"
+  },
+  {
+    "serial_number": 9,
+    "cn": "玄武门遗址",
+    "en": "xuanwu",
+    "longitude": 108.95836399999999,
+    "latitude": 34.303407,
+    "intro": "玄武门是唐长安城大明宫的北宫门，位于宫城北垣中部偏西，始建于贞观八年（公元634年）。门上有楼，为单门道。贞元年间，德宗对玄武门进行修葺，增设门楼与两廊，并驻守北衙禁军，使之成为宫城北部防卫体系的核心。",
+    "img_address": "xuanwu.jpg",
+    "audio_address": "xuanwu.wav"
+  },
+  {
+    "serial_number": 10,
+    "cn": "梨园",
+    "en": "liyuan",
+    "longitude": 108.96320999999999,
+    "latitude": 34.296018,
+    "intro": "梨园为唐代长安禁苑重要历史遗址，始创于唐中宗景云年间，最初为禁苑马毬场地，开元二年（714年）唐玄宗改组为皇室乐舞教坊。",
+    "img_address": "liyuan.jpg",
+    "audio_address": "liyuan.wav"
+  },
+  {
+    "serial_number": 11,
+    "cn": "紫宸殿遗址",
+    "en": "zichen",
+    "longitude": 108.96002999999999,
+    "latitude": 34.2937,
+    "intro": "建成于龙朔三年（663年），是大明宫南北中轴线上的第三大殿，为内朝正殿。\n三朝体系：与含元殿（外朝）、宣政殿（中朝）共同构成大明宫“外、中、内”完整三朝制度。",
+    "img_address": "zichen.jpg",
+    "audio_address": "zichen.wav"
+  },
+  {
+    "serial_number": 12,
+    "cn": "延英殿遗址",
+    "en": "yanying",
+    "longitude": 108.95853,
+    "latitude": 34.293378,
+    "intro": "大致建于开元年间，位于紫宸殿西侧，晚唐曾短暂改名灵芝殿，后恢复旧称。\n特殊朝会制度：自唐代宗起，这里成为非正式的私密议政之所，君臣礼仪极简、旁无侍卫，大臣可以直言进谏，逐渐发展为定期的“延英召对”常制。\n历史价值：中晚唐许多重大国策、军政机密决策，都诞生于延英殿，是唐朝中后期实际的权力决策核心之一。",
+    "img_address": "yanying.jpg",
+    "audio_address": "yanying.wav"
+  },
+  {
+    "serial_number": 13,
+    "cn": "宣政殿遗址",
+    "en": "xuanzheng",
+    "longitude": 108.9601,
+    "latitude": 34.292092,
+    "intro": "建于唐高宗龙朔二年（662年），地处含元殿正北300米，是大明宫中朝正殿。\n政务功能：大唐官方常朝的举办地，皇帝每月初一、十五在此举行正规大朝会，日常在此处理全国公务、册封太子、颁布重大政令、接见各国正式外交使团。\n建筑规格：殿基东西长近70米、南北宽40余米，是整个宫城的行政中枢所在。",
+    "img_address": "xuanzheng.jpg",
+    "audio_address": "xuanzheng.wav"
+  },
+  {
+    "serial_number": 14,
+    "cn": "望仙台遗址",
+    "en": "wangxian",
+    "longitude": 108.96137999999999,
+    "latitude": 34.293183,
+    "intro": "唐武宗会昌年间（约841-844年），动用神策军三千余人专门修筑，是大明宫内专属的皇家道教高台建筑。",
+    "img_address": "wangxian.jpg",
+    "audio_address": "wangxian.wav"
+  },
+  {
+    "serial_number": 15,
+    "cn": "含元殿遗址",
+    "en": "hanyuan",
+    "longitude": 108.960195,
+    "latitude": 34.289124,
+    "intro": "建成于龙朔三年（663年），毁于唐末886年战乱，是大明宫外朝正宫主殿、整座宫城的标志建筑。",
+    "img_address": "hanyuan.jpg",
+    "audio_address": "hanyuan.wav"
+  },
+  {
+    "serial_number": 16,
+    "cn": "钟楼东南角",
+    "en": "zhongse",
+    "longitude": 108.94406199999999,
+    "latitude": 34.260331,
+    "intro": "西安钟楼位于西安市中心，明城墙内东西南北四条大街的交汇处，建于明太祖洪武十七年（1384年），是中国现存钟楼中规模最大、建筑年代最久、保存最完好的一座。初建于今广济街口，与西安鼓楼相对，明神宗万历十年（1582年）整体迁移于今址。",
+    "img_address": "zhongse.jpg",
+    "audio_address": "zhongse.wav"
+  },
+  {
+    "serial_number": 17,
+    "cn": "钟楼西南角",
+    "en": "zhongsw",
+    "longitude": 108.94231099999999,
+    "latitude": 34.260456,
+    "intro": "西安钟楼位于西安市中心，明城墙内东西南北四条大街的交汇处，建于明太祖洪武十七年（1384年），是中国现存钟楼中规模最大、建筑年代最久、保存最完好的一座。初建于今广济街口，与西安鼓楼相对，明神宗万历十年（1582年）整体迁移于今址。",
+    "img_address": "zhongsw.jpg",
+    "audio_address": "zhongsw.wav"
+  },
+  {
+    "serial_number": 18,
+    "cn": "钟楼西北角",
+    "en": "zhongnw",
+    "longitude": 108.942312,
+    "latitude": 34.261546,
+    "intro": "西安钟楼位于西安市中心，明城墙内东西南北四条大街的交汇处，建于明太祖洪武十七年（1384年），是中国现存钟楼中规模最大、建筑年代最久、保存最完好的一座。初建于今广济街口，与西安鼓楼相对，明神宗万历十年（1582年）整体迁移于今址。",
+    "img_address": "zhongnw.jpg",
+    "audio_address": "zhongnw.wav"
+  },
+  {
+    "serial_number": 19,
+    "cn": "钟楼东北角",
+    "en": "zhongne",
+    "longitude": 108.942758,
+    "latitude": 34.260844,
+    "intro": "西安钟楼位于西安市中心，明城墙内东西南北四条大街的交汇处，建于明太祖洪武十七年（1384年），是中国现存钟楼中规模最大、建筑年代最久、保存最完好的一座。初建于今广济街口，与西安鼓楼相对，明神宗万历十年（1582年）整体迁移于今址。",
+    "img_address": "zhongne.jpg",
+    "audio_address": "zhongne.wav"
+  },
+  {
+    "serial_number": 20,
+    "cn": "鼓楼东南角",
+    "en": "guse",
+    "longitude": 108.94049199999999,
+    "latitude": 34.260943,
+    "intro": "‌西安鼓楼位于古都西安市中心，明城墙内东西南北四条大街交汇处的西安钟楼西北方约 200 米处，建于明太祖朱元璋洪武十三年（1380 年），是中国现存明代建筑中仅次于故宫太和殿、长陵棱恩殿的一座大体量古代建筑，在中国鼓楼类建筑中年代最久、保存最完好 。该楼建在方型基座之上，为砖木结构，顶部为重檐形式，总高 36 米，占地面积 1998.8 平方米，1996 年被国务院公布为全国重点文物保护单位 。",
+    "img_address": "guse.jpg",
+    "audio_address": "guse.wav"
+  },
+  {
+    "serial_number": 21,
+    "cn": "鼓楼西南角",
+    "en": "gusw",
+    "longitude": 108.93906199999999,
+    "latitude": 34.261499,
+    "intro": "西安鼓楼位于古都西安市中心，明城墙内东西南北四条大街交汇处的西安钟楼西北方约 200 米处，建于明太祖朱元璋洪武十三年（1380 年），是中国现存明代建筑中仅次于故宫太和殿、长陵棱恩殿的一座大体量古代建筑，在中国鼓楼类建筑中年代最久、保存最完好 。该楼建在方型基座之上，为砖木结构，顶部为重檐形式，总高 36 米，占地面积 1998.8 平方米，1996 年被国务院公布为全国重点文物保护单位 。",
+    "img_address": "gusw.jpg",
+    "audio_address": "gusw.wav"
+  },
+  {
+    "serial_number": 22,
+    "cn": "回民街",
+    "en": "hui",
+    "longitude": 108.939528,
+    "latitude": 34.262088,
+    "intro": "回民街（The Muslim Quarter），别称坊上，是陕西省西安市莲湖区北院门街道内的美食文化街区，由北院门、北广济街、西羊市、大皮院、化觉巷、洒金桥等街道组成。该区域在北宋晚期至南宋初形成回族聚居地，明清时期发展为传统商贸活动区，因长期聚居回族居民而得名。1992年改造为青石路面与仿明清建筑街区，1993年建成仿古文化旅游街。",
+    "img_address": "hui.jpg",
+    "audio_address": "hui.wav"
+  },
+  {
+    "serial_number": 23,
+    "cn": "永宁门北口",
+    "en": "yongningn",
+    "longitude": 108.94219899999999,
+    "latitude": 34.254099,
+    "intro": "永宁门，又称南门，是西安城墙的正南门，始建于隋开皇二年（公元582年），是西安城门中历史最久、沿用时间最长的一座城门 。",
+    "img_address": "yongningn.jpg",
+    "audio_address": "yongningn.wav"
+  },
+  {
+    "serial_number": 24,
+    "cn": "书院门",
+    "en": "shuyuan",
+    "longitude": 108.94355699999999,
+    "latitude": 34.254464,
+    "intro": "永宁门，又称南门，是西安城墙的正南门，始建于隋开皇二年（公元582年），是西安城门中历史最久、沿用时间最长的一座城门 。",
+    "img_address": "shuyuan.jpg",
+    "audio_address": "shuyuan.wav"
+  },
+  {
+    "serial_number": 25,
+    "cn": "南门盘道",
+    "en": "pandao",
+    "longitude": 108.942693,
+    "latitude": 34.253561,
+    "intro": "永宁门，又称南门，是西安城墙的正南门，始建于隋开皇二年（公元582年），是西安城门中历史最久、沿用时间最长的一座城门 。",
+    "img_address": "pandao.jpg",
+    "audio_address": "pandao.wav"
+  },
+  {
+    "serial_number": 26,
+    "cn": "南门口",
+    "en": "nanmen",
+    "longitude": 108.942879,
+    "latitude": 34.251555,
+    "intro": "永宁门，又称南门，是西安城墙的正南门，始建于隋开皇二年（公元582年），是西安城门中历史最久、沿用时间最长的一座城门 。",
+    "img_address": "nanmen.jpg",
+    "audio_address": "nanmen.wav"
+  },
+  {
+    "serial_number": 27,
+    "cn": "圜丘天坛遗址南",
+    "en": "yuanqius",
+    "longitude": 108.94477099999999,
+    "latitude": 34.201341,
+    "intro": "圜丘遗址（隋唐天坛遗址），位于陕西省西安市雁塔区天坛路与雁展路之间（隋唐长安城明德门外东1千米处）。“圜丘”又称“圆丘”，俗称天坛，因古人认为天圆地方，所以天坛建成圆形丘状。隋唐天坛是隋唐皇帝祭天的地方。包括隋文帝、唐太宗、唐高宗、武则天、唐玄宗等在内的20多位皇帝曾在此登坛祭天。",
+    "img_address": "yuanqius.jpg",
+    "audio_address": "yuanqius.wav"
+  },
+  {
+    "serial_number": 28,
+    "cn": "圜丘天坛遗址东",
+    "en": "yuanqiue",
+    "longitude": 108.94655999999999,
+    "latitude": 34.202783,
+    "intro": "圜丘遗址（隋唐天坛遗址），位于陕西省西安市雁塔区天坛路与雁展路之间（隋唐长安城明德门外东1千米处）。“圜丘”又称“圆丘”，俗称天坛，因古人认为天圆地方，所以天坛建成圆形丘状。隋唐天坛是隋唐皇帝祭天的地方。包括隋文帝、唐太宗、唐高宗、武则天、唐玄宗等在内的20多位皇帝曾在此登坛祭天。",
+    "img_address": "yuanqiue.jpg",
+    "audio_address": "yuanqiue.wav"
+  },
+  {
+    "serial_number": 29,
+    "cn": "圜丘天坛遗址北",
+    "en": "yuanqiun",
+    "longitude": 108.945985,
+    "latitude": 34.203019,
+    "intro": "圜丘遗址（隋唐天坛遗址），位于陕西省西安市雁塔区天坛路与雁展路之间（隋唐长安城明德门外东1千米处）。“圜丘”又称“圆丘”，俗称天坛，因古人认为天圆地方，所以天坛建成圆形丘状。隋唐天坛是隋唐皇帝祭天的地方。包括隋文帝、唐太宗、唐高宗、武则天、唐玄宗等在内的20多位皇帝曾在此登坛祭天。",
+    "img_address": "yuanqiun.jpg",
+    "audio_address": "yuanqiun.wav"
+  },
+  {
+    "serial_number": 30,
+    "cn": "圜丘天坛遗址西",
+    "en": "yuanqiuw",
+    "longitude": 108.94537299999999,
+    "latitude": 34.202476,
+    "intro": "圜丘遗址（隋唐天坛遗址），位于陕西省西安市雁塔区天坛路与雁展路之间（隋唐长安城明德门外东1千米处）。“圜丘”又称“圆丘”，俗称天坛，因古人认为天圆地方，所以天坛建成圆形丘状。隋唐天坛是隋唐皇帝祭天的地方。包括隋文帝、唐太宗、唐高宗、武则天、唐玄宗等在内的20多位皇帝曾在此登坛祭天。",
+    "img_address": "yuanqiuw.jpg",
+    "audio_address": "yuanqiuw.wav"
+  },
+  {
+    "serial_number": 31,
+    "cn": "明德门1",
+    "en": "mingde1",
+    "longitude": 108.935569,
+    "latitude": 34.207174,
+    "intro": "明德门是隋唐京师长安城郭城的正南门，亦是隋唐长安国门。根据考古发掘，明德门为五门洞；“天子五门道”，明德门和长安城皇城门朱雀门、大明宫丹凤门一样是都城建制的最高等级五门道，是名副其实的“隋唐第一门”；始建于隋开皇二年（582年），唐永徽五年重建，是唐长安城的正南门，与皇城朱雀门，宫城承天门构成长安城南北中轴线。唐末毁于战火。",
+    "img_address": "mingde1.jpg",
+    "audio_address": "mingde1.wav"
+  },
+  {
+    "serial_number": 32,
+    "cn": "明德门2",
+    "en": "mingde2",
+    "longitude": 108.93602299999999,
+    "latitude": 34.205589,
+    "intro": "明德门是隋唐京师长安城郭城的正南门，亦是隋唐长安国门。根据考古发掘，明德门为五门洞；“天子五门道”，明德门和长安城皇城门朱雀门、大明宫丹凤门一样是都城建制的最高等级五门道，是名副其实的“隋唐第一门”；始建于隋开皇二年（582年），唐永徽五年重建，是唐长安城的正南门，与皇城朱雀门，宫城承天门构成长安城南北中轴线。唐末毁于战火。",
+    "img_address": "mingde2.jpg",
+    "audio_address": "mingde2.wav"
+  },
+  {
+    "serial_number": 33,
+    "cn": "明德门3",
+    "en": "mingde3",
+    "longitude": 108.93648499999999,
+    "latitude": 34.205558,
+    "intro": "明德门是隋唐京师长安城郭城的正南门，亦是隋唐长安国门。根据考古发掘，明德门为五门洞；“天子五门道”，明德门和长安城皇城门朱雀门、大明宫丹凤门一样是都城建制的最高等级五门道，是名副其实的“隋唐第一门”；始建于隋开皇二年（582年），唐永徽五年重建，是唐长安城的正南门，与皇城朱雀门，宫城承天门构成长安城南北中轴线。唐末毁于战火。",
+    "img_address": "mingde3.jpg",
+    "audio_address": "mingde3.wav"
+  }
+]
