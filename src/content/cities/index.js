@@ -5,7 +5,13 @@ const noteModules = import.meta.glob("./*/note.*.md", {
   import: "default",
 });
 
-export const cityOrder = ["daming-palace", "bell-tower", "yongning-gate"];
+export const cityOrder = [
+  "daming-palace",
+  "bell-tower",
+  "yongning-gate",
+  "huanqiu-tiantan",
+  "mingde-gate",
+];
 
 export const cityContent = cityOrder.reduce((accumulator, slug) => {
   const meta = metaModules[`./${slug}/meta.json`];

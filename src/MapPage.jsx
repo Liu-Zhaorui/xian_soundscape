@@ -1,114 +1,38 @@
 import { useEffect, useRef, useState } from "react";
 import { locations, mapCenter, mapZoom } from "./content/cities/locations";
-import { createWaveBlob } from "./lib/audio";
+import places from "./content/places.json";
+import { Footer } from "./Footer";
+
+const imageAssets = import.meta.glob("./content/img/typical/*.{jpg,JPG,png,jpeg}", { as: "url", eager: true });
+const audioAssets = import.meta.glob("./content/audio/*.wav", { as: "url", eager: true });
+
+const normalizeAssetName = (path) => path.split(/[/\\\\]/).pop().toLowerCase();
+const imageUrls = Object.fromEntries(
+  Object.entries(imageAssets).map(([path, url]) => [normalizeAssetName(path), url])
+);
+const audioUrls = Object.fromEntries(
+  Object.entries(audioAssets).map(([path, url]) => [normalizeAssetName(path), url])
+);
+
+const resolveAssetUrl = (map, name) => {
+  if (!name) return null;
+  const key = name.toLowerCase();
+  if (map[key]) return map[key];
+  const base = key.replace(/\.[^.]+$/, "");
+  return map[`${base}.jpg`] || map[`${base}.jpeg`] || map[`${base}.png`] || map[`${base}.wav`] || null;
+};
 
 export function MapPage({ lang, onToggleLanguage, navigate }) {
   const [headerVisible, setHeaderVisible] = useState(true);
-  const [muted, setMuted] = useState(false);
-  const [activeMarker, setActiveMarker] = useState(null);
-  const [sheetOpen, setSheetOpen] = useState(false);
-  const [currentMapZoom, setCurrentMapZoom] = useState(mapZoom);
-  
+
   const scrollRef = useRef(0);
   const rafRef = useRef(0);
-  const panelRef = useRef(null);
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const markersRef = useRef([]);
-  const audioContextRef = useRef(null);
-  const audioSourcesRef = useRef({});
-  const pannerNodesRef = useRef({});
-  const gainNodesRef = useRef({});
-  const objectUrlRef = useRef({});
-  const audioElementsRef = useRef({});
 
   const title = lang === "zh" ? "西安声景全景" : "Xian Soundscape Panorama";
   const subtitle = lang === "zh" ? "在地图上探索三个标志性地点的声音故事" : "Explore the acoustic stories of three iconic locations";
-
-  // Initialize audio context
-  const getAudioContext = () => {
-    if (!audioContextRef.current) {
-      try {
-        const context = new (window.AudioContext || window.webkitAudioContext)();
-        audioContextRef.current = context;
-        if (context.state === "suspended") {
-          context.resume().catch(() => {});
-        }
-      } catch (e) {
-        console.error("Failed to initialize AudioContext:", e);
-        return null;
-      }
-    }
-    return audioContextRef.current;
-  };
-
-  // Initialize audio sources for all markers
-  useEffect(() => {
-    const audioContext = getAudioContext();
-    if (!audioContext || muted) return;
-
-    Object.entries(locations).forEach(([citySlug, location]) => {
-      location.hotspots.forEach((hotspot) => {
-        const audioKey = `${citySlug}-${hotspot.id}`;
-        
-        if (!audioElementsRef.current[audioKey]) {
-          // Create audio element
-          const audio = new Audio();
-          audio.loop = true;
-          audio.volume = 0;
-          
-          // Create blob for audio
-          const soundConfig = {
-            seed: Math.random(),
-            color: hotspot.id === "bell" ? "bell" : hotspot.id === "corridor" ? "wind" : "water"
-          };
-          
-          const blob = createWaveBlob(soundConfig, { duration: 24, gain: 0.2 });
-          const url = URL.createObjectURL(blob);
-          audio.src = url;
-          
-          objectUrlRef.current[audioKey] = url;
-          audioElementsRef.current[audioKey] = audio;
-
-          // Create Web Audio API nodes for spatial audio
-          if (!audioSourcesRef.current[audioKey]) {
-            try {
-              const source = audioContext.createMediaElementAudioSource(audio);
-              const gainNode = audioContext.createGain();
-              const pannerNode = audioContext.createPanner();
-              
-              // Configure panner for spatial audio
-              pannerNode.panningModel = "HRTF";
-              pannerNode.distanceModel = "inverse";
-              pannerNode.refDistance = 1;
-              pannerNode.maxDistance = 100;
-              pannerNode.rolloffFactor = 1;
-
-              source.connect(gainNode);
-              gainNode.connect(pannerNode);
-              pannerNode.connect(audioContext.destination);
-
-              audioSourcesRef.current[audioKey] = source;
-              gainNodesRef.current[audioKey] = gainNode;
-              pannerNodesRef.current[audioKey] = pannerNode;
-
-              // Start playing
-              audio.play().catch(() => {});
-            } catch (e) {
-              console.error(`Failed to initialize audio for ${audioKey}:`, e);
-            }
-          }
-        }
-      });
-    });
-
-    return () => {
-      // Cleanup
-      Object.values(objectUrlRef.current).forEach((url) => {
-        if (url) URL.revokeObjectURL(url);
-      });
-    };
-  }, [muted]);
 
   // Load and initialize Leaflet map
   useEffect(() => {
@@ -139,7 +63,17 @@ export function MapPage({ lang, onToggleLanguage, navigate }) {
       if (mapRef.current.classList.contains("leaflet-container")) return;
 
       const L = window.L;
-      const map = L.map(mapRef.current).setView(mapCenter, mapZoom);
+      const map = L.map(mapRef.current, {
+        center: mapCenter,
+        zoom: mapZoom,
+        minZoom: 12,        // 最小缩放级别
+        maxZoom: 16,        // 最大缩放级别
+        maxBounds: [         // 地图边界限制（西安地区）
+          [34.15, 108.7],   // 西南角
+          [34.45, 109.1]    // 东北角
+        ],
+        maxBoundsViscosity: 1.0  // 边界粘性，1.0表示完全限制在边界内
+      });
 
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors",
@@ -148,25 +82,38 @@ export function MapPage({ lang, onToggleLanguage, navigate }) {
 
       mapInstanceRef.current = map;
 
-      // Add markers for all locations
-      Object.entries(locations).forEach(([citySlug, location]) => {
-        const marker = L.circleMarker(location.coordinates, {
-          radius: 12,
-          fillColor: "#88e0ff",
-          color: "#88e0ff",
+      // Add markers from Excel data
+      places.forEach((place) => {
+        const marker = L.circleMarker([place.latitude, place.longitude], {
+          radius: 15,
+          fillColor: "#ff4444",
+          color: "#ff4444",
           weight: 2,
-          opacity: 0.8,
-          fillOpacity: 0.4,
+          opacity: 0.9,
+          fillOpacity: 0.5,
           className: "map-marker-point"
-        })
-          .bindPopup(`<div style="font-family: inherit;"><strong>${location.name[lang]}</strong><br />${location.description[lang]}</div>`)
-          .addTo(map);
-
-        // Add interactive behavior
-        marker.on("click", () => {
-          setActiveMarker({ slug: citySlug, data: location });
-          setSheetOpen(true);
         });
+
+        const title = lang === "zh" ? place.cn : place.en;
+        const description = place.intro ? place.intro.replace(/\n/g, "<br />") : "";
+        const imageUrl = resolveAssetUrl(imageUrls, place.img_address);
+        const audioUrl = resolveAssetUrl(audioUrls, place.audio_address);
+        const popupContent = `
+          <div class="map-popup">
+            <div class="popup-title">${title}</div>
+            ${description ? `<div class="popup-description">${description}</div>` : ""}
+            ${imageUrl ? `<img src="${imageUrl}" alt="${title}" class="map-popup-image"/>` : ""}
+            ${audioUrl ? `<audio controls src="${audioUrl}" class="map-popup-audio"></audio>` : ""}
+          </div>`;
+
+        marker.bindPopup(popupContent, { maxWidth: 380 });
+        const tooltipContent = `${title}<br />${place.latitude.toFixed(6)}, ${place.longitude.toFixed(6)}`;
+        marker.bindTooltip(tooltipContent, { 
+          permanent: false, 
+          direction: "top",
+          offset: [0, -15]
+        });
+        marker.addTo(map);
 
         marker.on("mouseover", () => {
           marker.setStyle({
@@ -178,105 +125,22 @@ export function MapPage({ lang, onToggleLanguage, navigate }) {
 
         marker.on("mouseout", () => {
           marker.setStyle({
-            fillOpacity: 0.4,
+            fillOpacity: 0.6,
             weight: 2,
-            radius: 12
+            radius: 15
+          });
+        });
+
+        marker.on("click", () => {
+          map.flyTo([place.latitude + 0.006, place.longitude], 16, {
+            duration: 1.5
           });
         });
 
         markersRef.current.push(marker);
       });
-
-      // Handle map events for audio updates
-      const updateAudioState = () => {
-        setCurrentMapZoom(map.getZoom());
-        updateAudioVolumes(map);
-      };
-
-      map.on("zoom", updateAudioState);
-      map.on("move", updateAudioState);
-      
-      // Initial update
-      updateAudioState();
     }
   }, [lang]);
-
-  const updateAudioVolumes = (map) => {
-    const audioContext = audioContextRef.current;
-    if (!map || !audioContext) return;
-    
-    const bounds = map.getBounds();
-    const mapSize = map.getSize();
-    const centerPixel = map.project(map.getCenter());
-    const currentZoom = map.getZoom();
-
-    Object.entries(locations).forEach(([citySlug, location]) => {
-      location.hotspots.forEach((hotspot) => {
-        const L = window.L;
-        const point = L.latLng(hotspot.coordinates);
-        const pointPixel = map.project(point);
-        const dx = pointPixel.x - centerPixel.x;
-        const dy = pointPixel.y - centerPixel.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        const audioKey = `${citySlug}-${hotspot.id}`;
-        const gainNode = gainNodesRef.current[audioKey];
-        const pannerNode = pannerNodesRef.current[audioKey];
-
-        if (!gainNode || !pannerNode) return;
-
-        // Calculate viewport half dimensions
-        const viewportHalfWidth = mapSize.x / 2;
-        const viewportHalfHeight = mapSize.y / 2;
-        const maxDistance = Math.sqrt(
-          viewportHalfWidth * viewportHalfWidth + 
-          viewportHalfHeight * viewportHalfHeight
-        );
-        
-        // Check if point is in viewport bounds
-        const isInViewport = bounds.contains(point);
-        
-        let finalVolume = 0;
-        
-        if (isInViewport) {
-          // 1. Calculate zoom-based volume (closer zoom = louder)
-          const zoomDiff = currentZoom - mapZoom;
-          const zoomVolume = Math.max(0.15, Math.min(1, 0.5 + zoomDiff * 0.15));
-          
-          // 2. Calculate distance-based volume (closer to center = louder)
-          const proximityVolume = Math.max(0, 1 - (distance / maxDistance) * 1.2);
-          
-          // Combined volume
-          finalVolume = zoomVolume * proximityVolume;
-          finalVolume = Math.min(0.85, Math.max(0, finalVolume));
-        }
-        
-        // Set gain with smooth transition
-        gainNode.gain.setTargetAtTime(
-          muted ? 0 : finalVolume, 
-          audioContext.currentTime, 
-          0.1
-        );
-        
-        // Set stereo panning based on horizontal position
-        if (isInViewport && finalVolume > 0.01) {
-          // Normalize pan value: -1 (left), 0 (center), 1 (right)
-          const panValue = (dx / viewportHalfWidth);
-          const clampedPan = Math.max(-1, Math.min(1, panValue));
-          
-          // Set 3D position for spatial audio using panner
-          const positionScale = 30;
-          const zPosition = 20;
-          pannerNode.setPosition(
-            clampedPan * positionScale,
-            0,
-            zPosition
-          );
-        }
-      });
-    });
-  };
-
   // Header scroll handling
   useEffect(() => {
     const onScroll = () => {
@@ -300,12 +164,15 @@ export function MapPage({ lang, onToggleLanguage, navigate }) {
     <div className="page-shell">
       <header className={`site-header ${headerVisible ? "" : "is-hidden"}`}>
         <div className="brand-lockup">
-          <span className="brand-cn">{lang === "zh" ? "城市声景" : "CITY"}</span>
-          <span className="brand-en">{lang === "zh" ? "City Soundscape" : "Urban Acoustic Narrative"}</span>
+          <span className="brand-cn">{lang === "zh" ? "西安中轴线古建筑声景" : "XI'AN"}</span>
+          <span className="brand-en">{lang === "zh" ? "CENTRAL AXIS ARCHITECTURAL SOUNDSCAPE" : "CENTRAL AXIS ARCHITECTURAL SOUNDSCAPE"}</span>
         </div>
         <nav className="city-nav" aria-label="City navigation">
           <button className="city-link is-active" title={lang === "zh" ? "全景" : "Panorama"}>
             {lang === "zh" ? "全景" : "PANORAMA"}
+          </button>
+          <button className="city-link" onClick={() => navigate("/soundwalk")}> 
+            {lang === "zh" ? "声漫步" : "SOUNDWALK"}
           </button>
           {Object.entries(locations).map(([slug, location]) => (
             <button
@@ -318,13 +185,6 @@ export function MapPage({ lang, onToggleLanguage, navigate }) {
           ))}
         </nav>
         <div className="header-actions">
-          <button
-            className="audio-toggle"
-            aria-pressed={muted}
-            onClick={() => setMuted((current) => !current)}
-          >
-            {muted ? (lang === "zh" ? "开启声音" : "Sound On") : lang === "zh" ? "静音" : "Mute"}
-          </button>
           <button className="lang-toggle" onClick={onToggleLanguage}>
             {lang === "zh" ? "EN" : "中文"}
           </button>
@@ -332,40 +192,9 @@ export function MapPage({ lang, onToggleLanguage, navigate }) {
       </header>
 
       <main>
-        <section className="hero map-hero">
-          <div className="hero-inner">
-            <div className="hero-copy">
-              <h1 className="hero-title">{title}</h1>
-              <p className="hero-subtitle">{subtitle}</p>
-            </div>
-          </div>
-        </section>
-
         <div id="map" ref={mapRef} className="map-container" />
-
-        <section className={`info-sheet ${sheetOpen ? "is-open" : ""}`} aria-hidden={!sheetOpen}>
-          <div className="sheet-backdrop" onClick={() => setSheetOpen(false)} />
-          <div className="sheet-panel" ref={panelRef} role="dialog" aria-modal="true">
-            <button className="sheet-close" onClick={() => setSheetOpen(false)} aria-label="Close">×</button>
-            {activeMarker && (
-              <div className="sheet-content">
-                <div className="sheet-copy">
-                  <h2>{activeMarker.data.name[lang]}</h2>
-                  <p className="sheet-text">{activeMarker.data.description[lang]}</p>
-                  <p className="sheet-text" style={{ fontSize: "0.9rem", color: "var(--muted)" }}>
-                    {lang === "zh" ? "坐标: " : "Coordinates: "}
-                    {activeMarker.data.coordinates[0].toFixed(4)}, {activeMarker.data.coordinates[1].toFixed(4)}
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
-        </section>
       </main>
 
-      <button className="to-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-        {lang === "zh" ? "顶部" : "TOP"}
-      </button>
     </div>
   );
 }

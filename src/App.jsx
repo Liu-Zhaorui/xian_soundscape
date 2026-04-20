@@ -2,24 +2,83 @@ import { useEffect, useMemo, useRef, useState, startTransition } from "react";
 import { Navigate, Route, Routes, useLocation, useNavigate, useParams } from "react-router-dom";
 import { cityContent, cityOrder } from "./content/cities";
 import { createWaveBlob } from "./lib/audio";
+import places from "./content/places.json";
 import { MapPage } from "./MapPage";
+import { AboutPage } from "./AboutPage";
+import { SoundwalkPage } from "./SoundwalkPage";
+import { Footer } from "./Footer";
+import { VideoIntro } from "./VideoIntro";
+import rms151Url from "./content/img/acoustics/1-15RMS.html?url";
+import rms1633Url from "./content/img/acoustics/16-33RMS.html?url";
+import lufs151Url from "./content/img/acoustics/1-15LUFS.html?url";
+import lufs1633Url from "./content/img/acoustics/16-33LUFS.html?url";
+
+const imageAssets = import.meta.glob("./content/img/typical/*.{jpg,JPG,png,jpeg}", { as: "url", eager: true });
+const audioAssets = import.meta.glob("./content/audio/*.wav", { as: "url", eager: true });
+
+const normalizeAssetName = (path) => path.split(/[/\\\\]/).pop().toLowerCase();
+const imageUrls = Object.fromEntries(
+  Object.entries(imageAssets).map(([path, url]) => [normalizeAssetName(path), url])
+);
+const audioUrls = Object.fromEntries(
+  Object.entries(audioAssets).map(([path, url]) => [normalizeAssetName(path), url])
+);
+
+const resolveAssetUrl = (name) => {
+  if (!name) return null;
+  const key = name.toLowerCase();
+  if (imageUrls[key]) return imageUrls[key];
+  const base = key.replace(/\.[^.]+$/, "");
+  return imageUrls[`${base}.jpg`] || imageUrls[`${base}.jpeg`] || imageUrls[`${base}.png`] || null;
+};
+
+const resolveAudioUrl = (name) => {
+  if (!name) return null;
+  const key = name.toLowerCase();
+  if (audioUrls[key]) return audioUrls[key];
+  const base = key.replace(/\.[^.]+$/, "");
+  return audioUrls[`${base}.wav`] || null;
+};
 
 const audioContext = typeof window !== "undefined" ? new (window.AudioContext || window.webkitAudioContext)() : null;
 
 export default function App() {
   const [lang, setLang] = useState("zh");
+  const [bgMuted, setBgMuted] = useState(true);
+  const [showIntro, setShowIntro] = useState(() => {
+    return sessionStorage.getItem("introWatched") !== "true";
+  });
+  const location = useLocation();
+
+  const isMapPage = location.pathname === '/map';
+
+  const isSoundwalkPage = location.pathname === '/soundwalk';
+
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+    sessionStorage.setItem("introWatched", "true");
+  };
+
+  if (showIntro) {
+    return <VideoIntro onComplete={handleIntroComplete} />;
+  }
 
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to={`/city/${cityOrder[0]}`} replace />} />
-      <Route path="/city/:citySlug" element={<CityRoute lang={lang} onToggleLanguage={() => startTransition(() => setLang((current) => (current === "zh" ? "en" : "zh")))} />} />
-      <Route path="/map" element={<MapRoute lang={lang} onToggleLanguage={() => startTransition(() => setLang((current) => (current === "zh" ? "en" : "zh")))} />} />
-      <Route path="*" element={<Navigate to={`/city/${cityOrder[0]}`} replace />} />
-    </Routes>
+    <>
+      {!isMapPage && !isSoundwalkPage && <BackgroundAudio muted={bgMuted} />}
+      <Routes>
+        <Route path="/" element={<Navigate to={`/city/${cityOrder[0]}`} replace />} />
+        <Route path="/city/:citySlug" element={<CityRoute lang={lang} onToggleLanguage={() => startTransition(() => setLang((current) => (current === "zh" ? "en" : "zh")))} bgMuted={bgMuted} setBgMuted={setBgMuted} />} />
+        <Route path="/map" element={<MapRoute lang={lang} onToggleLanguage={() => startTransition(() => setLang((current) => (current === "zh" ? "en" : "zh")))} />} />
+        <Route path="/soundwalk" element={<SoundwalkPage lang={lang} />} />
+        <Route path="/about" element={<AboutPage lang={lang} onToggleLanguage={() => startTransition(() => setLang((current) => (current === "zh" ? "en" : "zh")))} bgMuted={bgMuted} setBgMuted={setBgMuted} />} />
+        <Route path="*" element={<Navigate to={`/city/${cityOrder[0]}`} replace />} />
+      </Routes>
+    </>
   );
 }
 
-function CityRoute({ lang, onToggleLanguage }) {
+function CityRoute({ lang, onToggleLanguage, bgMuted, setBgMuted }) {
   const { citySlug } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,7 +94,7 @@ function CityRoute({ lang, onToggleLanguage }) {
 
   if (!city) return null;
 
-  return <CityPage city={city} lang={lang} onToggleLanguage={onToggleLanguage} />;
+  return <CityPage city={city} lang={lang} onToggleLanguage={onToggleLanguage} bgMuted={bgMuted} setBgMuted={setBgMuted} />;
 }
 
 function MapRoute({ lang, onToggleLanguage }) {
@@ -49,71 +108,61 @@ function MapRoute({ lang, onToggleLanguage }) {
   return <MapPage lang={lang} onToggleLanguage={onToggleLanguage} navigate={navigate} />;
 }
 
-function CityPage({ city, lang, onToggleLanguage }) {
+const STACK_RANGES = {
+  "daming-palace": [1, 15],
+  "bell-tower": [16, 22],
+  "yongning-gate": [23, 26],
+  "huanqiu-tiantan": [27, 30],
+  "mingde-gate": [31, 33],
+};
+
+function CityPage({ city, lang, onToggleLanguage, bgMuted, setBgMuted }) {
   const navigate = useNavigate();
   const content = city.text[lang];
   const [headerVisible, setHeaderVisible] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [muted, setMuted] = useState(false);
+  const [stackProgress, setStackProgress] = useState(0);
   const [activeHotspot, setActiveHotspot] = useState(null);
   const [sheetOpen, setSheetOpen] = useState(false);
   const scrollRef = useRef(0);
   const rafRef = useRef(0);
-  const bgAudioRef = useRef(null);
   const panelRef = useRef(null);
   const spectrumCanvasRef = useRef(null);
   const analyserRef = useRef(null);
   const sourceRef = useRef(null);
   const sheetAudioRef = useRef(null);
-  const objectUrlRef = useRef({ background: null, sheet: null });
+  const objectUrlRef = useRef({ sheet: null });
   const sceneRefs = useRef([]);
   const layerRefs = useRef([]);
   const hotspotRefs = useRef([]);
+  const damingStackRef = useRef(null);
 
   const hotspotLookup = useMemo(
     () => content.scenes.flatMap((scene) => scene.hotspots),
     [content.scenes]
   );
 
+  const stackPlaces = useMemo(() => {
+    const range = STACK_RANGES[city.slug];
+    if (!range) return [];
+    const [min, max] = range;
+    return places
+      .filter((place) => place.serial_number >= min && place.serial_number <= max)
+      .sort((a, b) => a.serial_number - b.serial_number)
+      .map((place) => ({
+        serial: place.serial_number,
+        title: lang === "zh" ? place.cn : place.en,
+        subtitle: lang === "zh" ? place.en : place.cn,
+        text: place.intro,
+        img: resolveAssetUrl(place.img_address),
+        audio: resolveAudioUrl(place.audio_address),
+      }));
+  }, [city.slug, lang]);
+
   useEffect(() => {
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
     document.title = lang === "zh" ? `${content.title} | 城市声景` : `${content.title} | City Soundscape`;
   }, [content.title, lang]);
-
-  useEffect(() => {
-    if (!bgAudioRef.current) return undefined;
-    const element = bgAudioRef.current;
-    if (objectUrlRef.current.background) URL.revokeObjectURL(objectUrlRef.current.background);
-    const source = city.backgroundSound.src
-      ? city.backgroundSound.src
-      : URL.createObjectURL(createWaveBlob(city.backgroundSound, { duration: 24, gain: 0.22 }));
-    objectUrlRef.current.background = city.backgroundSound.src ? null : source;
-    element.src = source;
-    element.volume = 0.4;
-    element.muted = muted;
-    const attempt = element.play();
-    if (attempt?.catch) {
-      attempt.catch(() => setMuted(true));
-    }
-    return () => {
-      element.pause();
-      if (objectUrlRef.current.background) {
-        URL.revokeObjectURL(objectUrlRef.current.background);
-        objectUrlRef.current.background = null;
-      }
-    };
-  }, [city, muted]);
-
-  useEffect(() => {
-    const element = bgAudioRef.current;
-    if (!element) return;
-    element.muted = muted;
-    if (muted) {
-      element.pause();
-      return;
-    }
-    element.play().catch(() => undefined);
-  }, [muted]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -145,6 +194,15 @@ function CityPage({ city, lang, onToggleLanguage }) {
             button.classList.toggle("is-visible", viewportProgress > threshold);
           });
         });
+
+        if (damingStackRef.current && stackPlaces.length > 1) {
+          const rect = damingStackRef.current.getBoundingClientRect();
+          const travel = rect.height - window.innerHeight;
+          const normalized = travel > 0 ? clamp((-rect.top) / travel, 0, 1) : 0;
+          setStackProgress(normalized * (stackPlaces.length - 1));
+        } else {
+          setStackProgress(0);
+        }
       });
     };
 
@@ -156,7 +214,20 @@ function CityPage({ city, lang, onToggleLanguage }) {
       window.removeEventListener("resize", onScroll);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [content.scenes]);
+  }, [city.slug, content.scenes, stackPlaces.length]);
+
+  useEffect(() => {
+    const container = damingStackRef.current;
+    if (!container) return;
+    const onPlay = (e) => {
+      if (e.target.tagName !== "AUDIO") return;
+      container.querySelectorAll("audio").forEach((a) => {
+        if (a !== e.target) a.pause();
+      });
+    };
+    container.addEventListener("play", onPlay, true);
+    return () => container.removeEventListener("play", onPlay, true);
+  }, [stackPlaces.length]);
 
   useEffect(() => {
     if (!sheetOpen || !activeHotspot || !sheetAudioRef.current || !audioContext) return undefined;
@@ -246,18 +317,24 @@ function CityPage({ city, lang, onToggleLanguage }) {
 
   const goToCity = (slug) => navigate(`/city/${slug}`);
 
+  const getStackTranslate = (index) => {
+    const offset = (index - stackProgress) * 100;
+    return clamp(offset, 0, 110);
+  };
+
   return (
     <div className="page-shell">
-      <audio ref={bgAudioRef} loop playsInline />
-
       <header className={`site-header ${headerVisible ? "" : "is-hidden"}`}>
         <div className="brand-lockup">
-          <span className="brand-cn">{lang === "zh" ? "城市声景" : "CITY"}</span>
-          <span className="brand-en">{lang === "zh" ? "City Soundscape" : "Urban Acoustic Narrative"}</span>
+          <span className="brand-cn">{lang === "zh" ? "西安中轴线古建筑声景" : "XI'AN"}</span>
+          <span className="brand-en">{lang === "zh" ? "CENTRAL AXIS ARCHITECTURAL SOUNDSCAPE" : "CENTRAL AXIS ARCHITECTURAL SOUNDSCAPE"}</span>
         </div>
         <nav className="city-nav" aria-label="City navigation">
           <button className="city-link" onClick={() => navigate("/map")} title={lang === "zh" ? "全景" : "Panorama"}>
             {lang === "zh" ? "全景" : "PANORAMA"}
+          </button>
+          <button className="city-link" onClick={() => navigate("/soundwalk")} title={lang === "zh" ? "声漫步" : "Soundwalk"}>
+            {lang === "zh" ? "声漫步" : "SOUNDWALK"}
           </button>
           {cityOrder.map((slug) => (
             <button key={slug} className={`city-link ${slug === city.slug ? "is-active" : ""}`} onClick={() => goToCity(slug)}>
@@ -268,13 +345,10 @@ function CityPage({ city, lang, onToggleLanguage }) {
         <div className="header-actions">
           <button
             className="audio-toggle"
-            aria-pressed={muted}
-            onClick={() => {
-              if (audioContext?.state === "suspended") audioContext.resume().catch(() => undefined);
-              setMuted((current) => !current);
-            }}
+            aria-pressed={bgMuted}
+            onClick={() => setBgMuted((current) => !current)}
           >
-            {muted ? (lang === "zh" ? "开启声音" : "Sound On") : lang === "zh" ? "静音" : "Mute"}
+            {bgMuted ? (lang === "zh" ? "声音：关" : "Sound On") : lang === "zh" ? "声音：开" : "Sound Off"}
           </button>
           <button className="lang-toggle" onClick={onToggleLanguage}>
             {lang === "zh" ? "EN" : "中文"}
@@ -310,72 +384,93 @@ function CityPage({ city, lang, onToggleLanguage }) {
           </div>
         </section>
 
-        {content.scenes.map((scene, sceneIndex) => (
+        {stackPlaces.length > 0 && (
           <section
-            className="scene"
-            key={scene.index}
-            data-parallax-owner
-            ref={(node) => {
-              sceneRefs.current[sceneIndex] = node;
-            }}
-            style={{ "--scene-gradient": city.palette[sceneIndex % city.palette.length] }}
+            className="daming-stack"
+            ref={damingStackRef}
+            style={{ "--stack-card-count": stackPlaces.length }}
+            aria-label={lang === "zh" ? "点位声景卡片" : "Place Cards"}
           >
-            <div className="scene-backdrop" data-speed="0.15" ref={(node) => storeRef(layerRefs, node)} />
-            <div className="scene-glow" data-speed="0.42" ref={(node) => storeRef(layerRefs, node)} />
-            <div className="scene-grid">
-              <div className="scene-meta" data-speed="0.06" ref={(node) => storeRef(layerRefs, node)}>
-                <span className="scene-index">{scene.index}</span>
-                <span className="scene-subtitle">{scene.subtitle}</span>
-              </div>
-              <div className="scene-body">
-                <h2 className="scene-title" data-speed="0.18" ref={(node) => storeRef(layerRefs, node)}>{scene.title}</h2>
-                <p className="scene-description" data-speed="0.28" ref={(node) => storeRef(layerRefs, node)}>{scene.description}</p>
-              </div>
-              <div className="hotspot-cluster">
-                {scene.hotspots.map((hotspot, hotspotIndex) => (
-                  <button
-                    key={hotspot.id}
-                    className="hotspot-button"
-                    style={{ left: hotspot.x, top: hotspot.y }}
-                    data-hotspot-threshold={0.26 + hotspotIndex * 0.08}
-                    ref={(node) => storeRef(hotspotRefs, node)}
-                    onClick={() => openHotspot(hotspotLookup.find((item) => item.id === hotspot.id))}
-                  >
-                    {hotspot.label}
-                  </button>
-                ))}
-              </div>
+            <div className="daming-stack__viewport">
+            {stackPlaces.map((place, index) => (
+                <article
+                  className="daming-card"
+                  key={place.serial}
+                  style={{
+                    "--card-index": index,
+                    transform: `translate3d(0, ${getStackTranslate(index)}%, 0)`,
+                  }}
+                >
+                  <div className="daming-card__layout">
+                    <section className="daming-card__copy">
+                      <header className="daming-card__header">
+                        <span className="daming-card__index">{String(place.serial).padStart(2, "0")}</span>
+                        <div>
+                          <h2 className="daming-card__title">{place.title}</h2>
+                          <p className="daming-card__subtitle">{place.subtitle}</p>
+                        </div>
+                      </header>
+
+                      <p className="daming-card__text">{place.text}</p>
+
+                      {place.audio ? (
+                        <audio className="daming-card__audio" controls preload="none" src={place.audio} />
+                      ) : (
+                        <div className="daming-card__audio-placeholder">{lang === "zh" ? "暂无音频" : "Audio unavailable"}</div>
+                      )}
+                    </section>
+
+                    <figure className="daming-card__visual">
+                      {place.img ? (
+                        <img className="daming-card__image" src={place.img} alt={place.title} loading="lazy" />
+                      ) : (
+                        <div className="daming-card__image daming-card__image--empty" aria-hidden="true" />
+                      )}
+                    </figure>
+
+                    <div className="daming-card__ums">
+                      <RmsChart serialNumber={place.serial} title="UMS / RMS" />
+                    </div>
+
+                    <div className="daming-card__lufs">
+                      <LufsChart serialNumber={place.serial} title="LUFS" />
+                    </div>
+                  </div>
+                </article>
+            ))}
             </div>
           </section>
-        ))}
+        )}
 
-        <div className="footer-note">{content.footer}</div>
+        <Footer lang={lang} note={content.footer} />
       </main>
 
       <button className="to-top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
         {lang === "zh" ? "顶部" : "TOP"}
       </button>
 
-      <section className={`info-sheet ${sheetOpen ? "is-open" : ""}`} aria-hidden={!sheetOpen}>
-        <div className="sheet-backdrop" onClick={() => setSheetOpen(false)} />
-        <div className="sheet-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="sheet-title">
-          <button className="sheet-close" onClick={() => setSheetOpen(false)} aria-label="Close">×</button>
-          {activeHotspot && (
-            <div className="sheet-content">
-              <div className="sheet-copy">
-                <span className="sheet-kicker">{activeHotspot.kicker}</span>
-                <h2 id="sheet-title">{activeHotspot.title}</h2>
-                <p className="sheet-text">{activeHotspot.text}</p>
-                <audio ref={sheetAudioRef} className="sheet-audio" controls preload="metadata" />
+      {!STACK_RANGES[city.slug] && (
+        <section className={`info-sheet ${sheetOpen ? "is-open" : ""}`} aria-hidden={!sheetOpen}>
+          <div className="sheet-backdrop" onClick={() => setSheetOpen(false)} />
+          <div className="sheet-panel" ref={panelRef} role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+            <button className="sheet-close" onClick={() => setSheetOpen(false)} aria-label="Close">×</button>
+            {activeHotspot && (
+              <div className="sheet-content">
+                <div className="sheet-copy">
+                  <span className="sheet-kicker">{activeHotspot.kicker}</span>
+                  <h2 id="sheet-title">{activeHotspot.title}</h2>
+                  <p className="sheet-text">{activeHotspot.text}</p>
+                  <audio ref={sheetAudioRef} className="sheet-audio" controls preload="metadata" />
+                </div>
+                <div className="sheet-media">
+                  <img className="sheet-image" src={activeHotspot.image} alt={activeHotspot.title} />
+                  <canvas className="spectrum" ref={spectrumCanvasRef} width="720" height="240" aria-label="Audio spectrum" />
+                </div>
               </div>
-              <div className="sheet-media">
-                <img className="sheet-image" src={activeHotspot.image} alt={activeHotspot.title} />
-                <canvas className="spectrum" ref={spectrumCanvasRef} width="720" height="240" aria-label="Audio spectrum" />
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
+            )}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
@@ -387,4 +482,114 @@ function storeRef(ref, node) {
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
+}
+
+function BackgroundAudio({ muted }) {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.src = '/background.wav'; // 相对于public的路径
+    audio.loop = true;
+    audio.volume = 0.4;
+    audio.muted = muted;
+
+    if (!muted) {
+      audio.play().catch(() => {});
+    } else {
+      audio.pause();
+    }
+
+    return () => {
+      audio.pause();
+    };
+  }, [muted]);
+
+  return <audio ref={audioRef} />;
+}
+
+function resolveRmsSource(serialNumber) {
+  const serial = Number(serialNumber);
+  if (!Number.isFinite(serial)) return null;
+  if (serial >= 1 && serial <= 15) return { src: rms151Url, chartId: `chart_${serial - 1}`, scope: "1-15" };
+  if (serial >= 16 && serial <= 33) return { src: rms1633Url, chartId: `chart_${serial - 16}`, scope: "16-33" };
+  return null;
+}
+
+export function RmsChart({ serialNumber, title = "RMS" }) {
+  const iframeRef = useRef(null);
+  const resolved = useMemo(() => resolveRmsSource(serialNumber), [serialNumber]);
+
+  const postSelect = () => {
+    const win = iframeRef.current?.contentWindow;
+    if (!win || !resolved) return;
+    win.postMessage({ type: "SET_RMS_CHART", chartId: resolved.chartId }, "*");
+    win.postMessage({ type: "SET_SCALE", scale: 0.7 }, "*");
+  };
+
+  useEffect(() => {
+    postSelect();
+  }, [resolved?.chartId, resolved?.src]);
+
+  if (!resolved) return null;
+
+  return (
+    <section className="metric-card" aria-label={`${title} chart`}>
+      <div className="metric-card__title">
+        {title} · {resolved.scope} · {resolved.chartId}
+      </div>
+      <iframe
+        ref={iframeRef}
+        src={resolved.src}
+        title={`RMS ${resolved.scope} ${resolved.chartId}`}
+        loading="lazy"
+        onLoad={postSelect}
+        className="metric-card__frame"
+      />
+    </section>
+  );
+}
+
+function resolveLufsSource(serialNumber) {
+  const serial = Number(serialNumber);
+  if (!Number.isFinite(serial)) return null;
+  if (serial >= 1 && serial <= 15) return { src: lufs151Url, chartId: `chart_${serial - 1}`, scope: "1-15" };
+  if (serial >= 16 && serial <= 33) return { src: lufs1633Url, chartId: `chart_${serial - 16}`, scope: "16-33" };
+  return null;
+}
+
+export function LufsChart({ serialNumber, title = "LUFS" }) {
+  const iframeRef = useRef(null);
+  const resolved = useMemo(() => resolveLufsSource(serialNumber), [serialNumber]);
+
+  const postSelect = () => {
+    const win = iframeRef.current?.contentWindow;
+    if (!win || !resolved) return;
+    win.postMessage({ type: "SET_LUFS_CHART", chartId: resolved.chartId }, "*");
+    win.postMessage({ type: "SET_SCALE", scale: 0.7 }, "*");
+  };
+
+  useEffect(() => {
+    postSelect();
+  }, [resolved?.chartId, resolved?.src]);
+
+  if (!resolved) return null;
+
+  return (
+    <section className="metric-card" aria-label={`${title} chart`}>
+      <div className="metric-card__title">
+        {title} · {resolved.scope} · {resolved.chartId}
+      </div>
+      <iframe
+        ref={iframeRef}
+        src={resolved.src}
+        title={`LUFS ${resolved.scope} ${resolved.chartId}`}
+        loading="lazy"
+        onLoad={postSelect}
+        className="metric-card__frame"
+      />
+    </section>
+  );
 }

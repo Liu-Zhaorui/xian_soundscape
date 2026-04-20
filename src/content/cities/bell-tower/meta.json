@@ -1,5 +1,5 @@
 {
-  "coverImage": "/assets/cities/bell-tower/cover.jpg",
+  "coverImage": "/src/content/img/typical/zhongse.jpg",
   "heroImage": "linear-gradient(135deg, rgba(70, 70, 70, 0.86), rgba(105, 105, 105, 0.4)), radial-gradient(circle at 30% 18%, rgba(192, 192, 192, 0.26), transparent 34%), radial-gradient(circle at 78% 28%, rgba(169, 169, 169, 0.24), transparent 30%)",
   "palette": [
     "linear-gradient(135deg, rgba(64, 64, 64, 0.92), rgba(105, 105, 105, 0.55))",
@@ -13,9 +13,9 @@
   },
   "text": {
     "zh": {
-      "nav": "钟楼",
+      "nav": "钟鼓楼",
       "eyebrow": "古城标志建筑声景档案",
-      "title": "钟楼·古城回鸣",
+      "title": "钟鼓楼·古城回鸣",
       "subtitle": "从晨间高塔的晨钟、脚步与人语，到暮色里古城的余韵，让滚动像一次见证古城沧桑的声景漫步，感受时间在这里的流逝。",
       "sideTitle": "声景维度",
       "stats": [
@@ -120,9 +120,9 @@
       ]
     },
     "en": {
-      "nav": "Bell Tower",
+      "nav": "Bell&Drum Tower",
       "eyebrow": "Historic City Landmark Soundscape",
-      "title": "Bell Tower: Ancient City Resonance",
+      "title": "Bell&Drum Tower: Ancient City Resonance",
       "subtitle": "From morning bell chimes, footsteps and voices, to twilight echoes across ancient streets, scroll through an acoustic journey witnessing the passage of time in this historic landmark.",
       "sideTitle": "Soundscape Metrics",
       "stats": [

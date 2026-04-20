@@ -1,8 +1,8 @@
-# Bell Tower Soundscape
+# Bell&Drum Tower Soundscape
 
 ## Urban Landmark
 
-The Bell Tower stands as the central landmark of the ancient city, witnessing millennia of urban development. More than an architectural masterpiece, it is a witness to time itself. Every peal of its bell marks the rhythm of city life, from antiquity to the present day.
+The Bell & Drum Tower stands as the central landmark of the ancient city, witnessing millennia of urban development. More than an architectural masterpiece, it is a witness to time itself. Every peal of its bell marks the rhythm of city life, from antiquity to the present day.
 
 ## Acoustic Properties
 

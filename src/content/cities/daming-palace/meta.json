@@ -1,5 +1,5 @@
 {
-  "coverImage": "/assets/cities/daming-palace/cover.jpg",
+  "coverImage": "/src/content/img/typical/youyin.jpg",
   "heroImage": "linear-gradient(135deg, rgba(139, 90, 43, 0.86), rgba(184, 134, 11, 0.4)), radial-gradient(circle at 30% 18%, rgba(244, 191, 101, 0.26), transparent 34%), radial-gradient(circle at 78% 28%, rgba(218, 165, 32, 0.24), transparent 30%)",
   "palette": [
     "linear-gradient(135deg, rgba(139, 69, 19, 0.92), rgba(101, 67, 33, 0.55))",
@@ -16,7 +16,7 @@
       "nav": "大明宫",
       "eyebrow": "唐代宫殿声景档案",
       "title": "大明宫·帝都回响",
-      "subtitle": "从晨曦中回廊的风声、脚步与钟鸣，到暮色里宫殿的余音，让滚动像一次穿越千年的声景之旅，感受曾经的盛唐辉煌。",
+      "subtitle": "晨间鸟鸣穿过空旷遗址，风扫过草叶如翻动史书残页。暮色四合时，虫声填满殿基的沉默。滚动间，从早朝的隐约喧嚣，到如今只剩自然低语，时间退得很远很干净。",
       "sideTitle": "声景维度",
       "stats": [
         [

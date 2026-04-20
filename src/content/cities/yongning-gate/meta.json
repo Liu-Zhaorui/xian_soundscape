@@ -1,5 +1,5 @@
 {
-  "coverImage": "/assets/cities/yongning-gate/cover.jpg",
+  "coverImage": "/src/content/img/typical/nanmen.jpg",
   "heroImage": "linear-gradient(135deg, rgba(139, 69, 19, 0.86), rgba(184, 134, 11, 0.4)), radial-gradient(circle at 30% 18%, rgba(218, 165, 32, 0.26), transparent 34%), radial-gradient(circle at 78% 28%, rgba(210, 180, 140, 0.24), transparent 30%)",
   "palette": [
     "linear-gradient(135deg, rgba(139, 69, 19, 0.92), rgba(160, 82, 45, 0.55))",
@@ -15,8 +15,8 @@
     "zh": {
       "nav": "永宁门",
       "eyebrow": "古城城门声景档案",
-      "title": "永宁门·古都门韵",
-      "subtitle": "从晨间城门口的鸟鸣、商旅的脚步声，到暮色中的钟鼓声响，让滚动像一次穿梭古都商业往来的声景旅行，感受历史的温度。",
+      "title": "永宁门·古都声韵",
+      "subtitle": "早晨门洞里脚步空阔，车铃与鸟鸣混成清脆的醒。入夜后车灯成河，笛声擦过城墙的纹理。滚动间，昔日金戈化作今日流光。",
       "sideTitle": "声景维度",
       "stats": [
         [
